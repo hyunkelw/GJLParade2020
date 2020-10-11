@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Bat : MonoBehaviour
 {
-    [Header("Rotate Bat")]
+    [SerializeField] float speedRotation = 5;
+
+    [Header("Limit Bat")]
     [Tooltip("Y axis to negative")] [SerializeField] float left = -75;
     [Tooltip("Y axis to positive")] [SerializeField] float right = 75;
     [Tooltip("X axis to negative")] [SerializeField] float up = -50;
@@ -19,38 +21,30 @@ public class Bat : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if(Input.GetKey(KeyCode.Mouse0) == false)
+        //rotate bat on mouse position
+        if (Input.GetKey(KeyCode.Mouse0))
         {
-            Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = transform.position.z;
-            Vector3 worldPosition = cam.ScreenToWorldPoint(mousePosition);
+            Quaternion targetRotation = GetTargetRotation();
 
-            Debug.Log(mousePosition + " -- " + worldPosition);
+            Quaternion rotation = Quaternion.Lerp(rb.rotation, targetRotation, Time.fixedDeltaTime * speedRotation);
 
-            //move position
-            Vector3 position = new Vector3(worldPosition.x, worldPosition.y, transform.position.z);
-            //rb.MovePosition(position);
+            rb.MoveRotation(rotation);
         }
     }
 
-    void FixedUpdate()
+    Quaternion GetTargetRotation()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
-        {
-            //mouse position to viewport (from 0,0 to 1,1)
-            Vector3 viewportPosition = cam.ScreenToViewportPoint(Input.mousePosition);
+        //mouse position to viewport (from 0,0 to 1,1)
+        Vector3 viewportPosition = cam.ScreenToViewportPoint(Input.mousePosition);
 
-            //from left to right, from down to up
-            float leftRight = Mathf.Lerp(left, right, viewportPosition.x);
-            float upDown = Mathf.Lerp(down, up, viewportPosition.y);
+        //from left to right, from down to up
+        float leftRight = Mathf.Lerp(left, right, viewportPosition.x);
+        float upDown = Mathf.Lerp(down, up, viewportPosition.y);
 
-            //rotate X and Y axis
-            Vector3 euler = new Vector3(upDown, leftRight, 0);
-            //rb.rotation = Quaternion.Euler(euler);
-            rb.MoveRotation(Quaternion.Euler(euler));
-            //transform.eulerAngles = new Vector3(upDown, leftRight, 0);
-        }
+        //rotation on X and Y axis
+        Vector3 euler = new Vector3(upDown, leftRight, 0);
+        return Quaternion.Euler(euler);
     }
 }
