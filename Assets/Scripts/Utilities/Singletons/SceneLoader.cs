@@ -16,7 +16,7 @@
             GameManager.instance.bat.enabled = true;
 
             //hide cursor and set timeScale to 1
-            Utility.LockMouse(CursorLockMode.Confined);
+            Utility.LockMouse(CursorLockMode.Locked);
             Time.timeScale = 1;
         }
 
