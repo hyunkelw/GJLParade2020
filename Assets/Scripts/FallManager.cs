@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test : MonoBehaviour
+public class FallManager : MonoBehaviour
 {
     [SerializeField] Collider[] areas = default;
     [SerializeField] GameObject[] prefabs = default;
     [SerializeField] float delay = 1.5f;
 
     float time;
+
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+    }
 
     void Update()
     {
