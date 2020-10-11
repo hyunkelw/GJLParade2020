@@ -10,11 +10,6 @@ public class FallManager : MonoBehaviour
 
     float time;
 
-    void Start()
-    {
-        Cursor.lockState = CursorLockMode.Confined;
-    }
-
     void Update()
     {
         if(Time.time > time)

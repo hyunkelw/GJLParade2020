@@ -26,10 +26,11 @@ public class Bat : MonoBehaviour
         //rotate bat on mouse position
         if (Input.GetKey(KeyCode.Mouse0))
         {
+            //get target rotation (mouse position)
             Quaternion targetRotation = GetTargetRotation();
 
+            //lerp rigidbody rotation
             Quaternion rotation = Quaternion.Lerp(rb.rotation, targetRotation, Time.fixedDeltaTime * speedRotation);
-
             rb.MoveRotation(rotation);
         }
     }
