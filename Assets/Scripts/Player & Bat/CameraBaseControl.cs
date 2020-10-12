@@ -15,7 +15,7 @@
         [SerializeField] float smoothRotation = 15;
 
         [Header("Sensitivity")]
-        [SerializeField] float sensitivityX = 200;
+        public float sensitivityX = 200;
         [SerializeField] float sensitivityY = 100;
 
         [Header("Clamp X")]

@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [Header("Player")]
     [Tooltip("Speed movement")] [SerializeField] float speed = 5;
     [Tooltip("Jump force")] [SerializeField] float jump = 5;
-    [SerializeField] CameraBaseControl cameraBaseControl = default;
+    public CameraBaseControl cameraBaseControl = default;
 
     [Header("CheckGround")]
     [SerializeField] Vector3 center = Vector3.zero;

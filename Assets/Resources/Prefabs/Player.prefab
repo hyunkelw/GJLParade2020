@@ -83,8 +83,8 @@ MonoBehaviour:
     firstPerson: 1
     smoothPosition: 50
     smoothRotation: 15
-    sensitivityX: 500
-    sensitivityY: 300
+    sensitivityX: 300
+    sensitivityY: 200
     minX: -360
     maxX: 360
     minY: -60
