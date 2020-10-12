@@ -499,5 +499,5 @@ MonoBehaviour:
   countdownTimer: {fileID: 5026965596430358227}
   levelTimer: {fileID: 5026965594915910483}
   preparationTimePanel: {fileID: 5026965596378155091}
-  baseTime: 30
+  baseTime: 180
   preparationTime: 5
