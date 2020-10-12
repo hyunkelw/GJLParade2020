@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     [Header("Bat")]
     [Tooltip("Bat to swing")] [SerializeField] Bat bat = default;
-    [Tooltip("When swinging bat, lock the camera?")] [SerializeField] bool onSwingLockCamera = false;
+    [Tooltip("When swinging bat, lock the camera?")] public bool onSwingLockCamera = false;
 
     Rigidbody rb;
 
@@ -54,15 +54,6 @@ public class Player : MonoBehaviour
 
         //move rigidbody
         rb.velocity = velocity;
-    }
-
-    #endregion
-
-    #region public API
-
-    public void Toggle_OnSwingLockCamera(bool isEnabled)
-    {
-        onSwingLockCamera = isEnabled;
     }
 
     #endregion
