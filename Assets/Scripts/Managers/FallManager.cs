@@ -22,8 +22,10 @@ public class FallManager : MonoBehaviour
 
     void Update()
     {
+        //only if IsSpawning is active
         if (!IsSpawning) { return; }
 
+        //Create objects with delay
         if (Time.time > time)
         {
             time = Time.time + delay;

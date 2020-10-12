@@ -26,8 +26,12 @@ public class SimpleOptions : MonoBehaviour
     [Header("Lock 60 FPS")]
     [SerializeField] Toggle toggle_Lock60FPS = default;
 
+    [Header("Camera Shake")]
+    [SerializeField] Toggle toggle_CameraShake = default;
+
     void Start()
     {
+        //set sliders using objects in scene
         slider_Fov.value = Camera.main.fieldOfView;
         text_Fov.text = "FOV: " + slider_Fov.value.ToString("F0");
 
@@ -37,9 +41,10 @@ public class SimpleOptions : MonoBehaviour
         slider_BatSensitivity.value = GameManager.instance.bat.rotationSpeed;
         text_BatSensitivity.text = string_BatSensitivity + slider_BatSensitivity.value.ToString("F0");
 
+        //set scene by toggle in menu
         Toggle_EnableVSync(toggle_EnableVSync.isOn);
-
         Toggle_Lock60FPS(toggle_Lock60FPS.isOn);
+        Toggle_CameraShake(toggle_CameraShake.isOn);
     }
 
     #region public API
@@ -81,6 +86,12 @@ public class SimpleOptions : MonoBehaviour
     {
         //set FPS to 60 or no limit
         Application.targetFrameRate = isEnabled ? 60 : -1;
+    }
+
+    public void Toggle_CameraShake(bool isEnabled)
+    {
+        //active/deactive camera shaker
+        Camera.main.GetComponent<CameraShaker>().enabled = isEnabled;
     }
 
     #endregion

@@ -158,20 +158,21 @@ public class Bat : MonoBehaviour
     void SuperHit(Collision collision)
     {
         //pooling particles on the bat
-        ParticleSystem go = poolingParticles.Instantiate(batParticles, collision.GetContact(0).point, Quaternion.identity);
-        var cameraShake = cam.GetComponent<CameraShaker>();
-        if (cameraShake.isActiveAndEnabled)
-        {
-            cameraShake.Shake();
-        }
-        
+        ParticleSystem go = poolingParticles.Instantiate(batParticles, collision.GetContact(0).point, Quaternion.identity);        
         go.Play(true);
 
-        //if hit a carp
+        //if hit a carp, call his super hit
         Carp carp = collision.gameObject.GetComponent<Carp>();
         if (carp != null)
         {
             carp.SuperHit();
+        }
+
+        //activate camera shake
+        var cameraShake = cam.GetComponent<CameraShaker>();
+        if (cameraShake.isActiveAndEnabled)
+        {
+            cameraShake.Shake();
         }
     }
 
