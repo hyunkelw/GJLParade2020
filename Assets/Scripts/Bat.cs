@@ -15,12 +15,17 @@ public class Bat : MonoBehaviour
     [Tooltip("X axis to negative")] [SerializeField] float up = -50;
     [Tooltip("X axis to positive")] [SerializeField] float down = 30;
 
+    [Header("Particles")]
+    [SerializeField] float speedThreshold = 20;
+    [SerializeField] ParticleSystem hitParticles = default;
+
     public bool SwingingBat { get; private set; }
 
     Camera cam;
     Rigidbody rb;
 
     Quaternion inputRotation = Quaternion.identity;
+    Pooling<ParticleSystem> poolingParticles = new Pooling<ParticleSystem>();
 
     void Start()
     {
@@ -57,6 +62,19 @@ public class Bat : MonoBehaviour
 
             //lock cursor
             Utility.LockMouse(CursorLockMode.Locked);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("velocity: " + rb.velocity.magnitude.ToString("F2") + " --- angular velocity: " + rb.angularVelocity.magnitude.ToString("F2"));
+
+        //if hitting with a lot of speed
+        if(rb.angularVelocity.magnitude > speedThreshold)
+        {
+            //pooling particles and play (restart particles)
+            ParticleSystem go = poolingParticles.Instantiate(hitParticles, collision.GetContact(0).point, Quaternion.identity);
+            go.Play(true);
         }
     }
 

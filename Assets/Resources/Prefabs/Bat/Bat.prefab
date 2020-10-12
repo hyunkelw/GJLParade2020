@@ -163,6 +163,8 @@ MonoBehaviour:
   right: 75
   up: -50
   down: 30
+  speedThreshold: 20
+  hitParticles: {fileID: 19800004, guid: 663a1750721902246a284820975a0396, type: 3}
 --- !u!54 &2380435056682168369
 Rigidbody:
   m_ObjectHideFlags: 0
