@@ -6,7 +6,6 @@ using redd096;
 public class Bat : MonoBehaviour
 {
     [Header("Important")]
-    [Tooltip("Speed lerp rotation")] [SerializeField] float speedRotation = 5;
     [Tooltip("Offset from camera position")] [SerializeField] Vector3 offset = Vector3.zero;
 
     [Header("Limit Rotation Bat")]
@@ -15,9 +14,9 @@ public class Bat : MonoBehaviour
     [Tooltip("X axis to negative")] [SerializeField] float up = -50;
     [Tooltip("X axis to positive")] [SerializeField] float down = 30;
 
-    [Header("Particles")]
-    [SerializeField] float speedThreshold = 20;
-    [SerializeField] ParticleSystem hitParticles = default;
+    [Header("Super Hit")]
+    [Tooltip("Speed to reach on hit, for super hit")] [SerializeField] float speedThreshold = 20;
+    [Tooltip("Particles to instantiate on super hit")] [SerializeField] ParticleSystem batParticles = default;
 
     public bool SwingingBat { get; private set; }
 
@@ -72,10 +71,9 @@ public class Bat : MonoBehaviour
         //if hitting with a lot of speed
         if(rb.angularVelocity.magnitude > speedThreshold)
         {
-            //pooling particles and play (restart particles)
-            ParticleSystem go = poolingParticles.Instantiate(hitParticles, collision.GetContact(0).point, Quaternion.identity);
-            go.Play(true);
+            SuperHit(collision);
         }
+
     }
 
     void LateUpdate()
@@ -121,7 +119,7 @@ public class Bat : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(euler);
 
         //lerp input rotation
-        inputRotation = Quaternion.Lerp(inputRotation, rotation, Time.fixedDeltaTime * speedRotation);
+        inputRotation = rotation;// Quaternion.Lerp(inputRotation, rotation, Time.fixedDeltaTime * speedRotation);
     }
 
     void FollowCamPosition()
@@ -137,6 +135,20 @@ public class Bat : MonoBehaviour
     {
         //camera rotation + input rotation
         rb.MoveRotation(cam.transform.rotation * inputRotation);
+    }
+
+    void SuperHit(Collision collision)
+    {
+        //pooling particles on the bat
+        ParticleSystem go = poolingParticles.Instantiate(batParticles, collision.GetContact(0).point, Quaternion.identity);
+        go.Play(true);
+
+        //if hit a carp
+        Carp carp = collision.gameObject.GetComponent<Carp>();
+        if (carp != null)
+        {
+            carp.SuperHit();
+        }
     }
 
     #endregion
