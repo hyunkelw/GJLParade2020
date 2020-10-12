@@ -11,9 +11,13 @@ public class FallManager : MonoBehaviour
 
     float time;
 
+    public bool IsSpawning { get; set; } = false;
+
     void Update()
     {
-        if(Time.time > time)
+        if (!IsSpawning) { return; }
+
+        if (Time.time > time)
         {
             time = Time.time + delay;
             CreateObject();
