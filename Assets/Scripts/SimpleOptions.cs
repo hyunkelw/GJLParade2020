@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class SimpleOptions : MonoBehaviour
 {
-    [Header("Lock Camera")]
-    [SerializeField] Toggle toggle_OnSwingLockCamera = default;
-
     [Header("FOV")]
     [SerializeField] Text text_Fov = default;
     [SerializeField] Slider slider_Fov = default;
@@ -31,30 +28,21 @@ public class SimpleOptions : MonoBehaviour
 
     void Start()
     {
-        //reset options menu based on game
-        toggle_OnSwingLockCamera.isOn = GameManager.instance.player.onSwingLockCamera;
-
         slider_Fov.value = Camera.main.fieldOfView;
         text_Fov.text = "FOV: " + slider_Fov.value.ToString("F0");
 
         slider_CameraSensitivity.value = GameManager.instance.player.cameraBaseControl.sensitivityX / 50;
         text_CameraSensitivity.text = string_CameraSensitivity + slider_CameraSensitivity.value.ToString("F0");
 
-        slider_BatSensitivity.value = GameManager.instance.player.bat.rotationSpeed;
+        slider_BatSensitivity.value = GameManager.instance.bat.rotationSpeed;
         text_BatSensitivity.text = string_BatSensitivity + slider_BatSensitivity.value.ToString("F0");
 
-        toggle_EnableVSync.isOn = QualitySettings.vSyncCount == 1;
+        Toggle_EnableVSync(toggle_EnableVSync.isOn);
 
-        toggle_Lock60FPS.isOn = Application.targetFrameRate > -1;
+        Toggle_Lock60FPS(toggle_Lock60FPS.isOn);
     }
 
     #region public API
-
-    public void Toggle_OnSwingLockCamera(bool isEnabled)
-    {
-        //set lock on player
-        GameManager.instance.player.onSwingLockCamera = isEnabled;
-    }
 
     public void Slider_FOV(float value)
     {
@@ -77,7 +65,7 @@ public class SimpleOptions : MonoBehaviour
     public void Slider_BatSensitivity(float value)
     {
         //set bat sensitivity
-        GameManager.instance.player.bat.rotationSpeed = value;
+        GameManager.instance.bat.rotationSpeed = value;
 
         //update text
         text_BatSensitivity.text = string_BatSensitivity + value.ToString("F0");

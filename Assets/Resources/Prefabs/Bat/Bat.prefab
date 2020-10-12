@@ -157,9 +157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e5b3672ee41f6d4e990b5f1657c605b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 11
   offset: {x: 0, y: -0.5, z: 1.1}
-  left: -75
-  right: 75
+  left: -100
+  right: 100
   up: -50
   down: 30
   speedThreshold: 20

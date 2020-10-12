@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [Header("Debug")]
-    [SerializeField] int score = 0;
+    int score = 0;
 
     public void AddPoints(int points)
     {

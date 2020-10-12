@@ -12,19 +12,14 @@ public class Player : MonoBehaviour
 
     [Header("CheckGround")]
     [SerializeField] Vector3 center = Vector3.zero;
-    [SerializeField] Vector3 size = Vector3.one;
+    [SerializeField] float radius = 2;
 
-    [Header("Bat")]
-    [Tooltip("Bat to swing")] public Bat bat = default;
-    [Tooltip("When swinging bat, lock the camera?")] public bool onSwingLockCamera = false;
-
-    //check in a box, if hit something other than the player
-    bool IsGrounded => Physics.OverlapBox(
-        transform.position + center, 
-        size / 2, 
-        transform.rotation, 
-        CreateLayer.LayerAllExcept(new string[] { "Player", "Bat", "Falling Object" }), 
-        QueryTriggerInteraction.Ignore)
+    //check in a sphere, if hit something other than player and bat
+    bool IsGrounded => Physics.OverlapSphere(
+        transform.position + center,
+        radius,
+        CreateLayer.LayerAllExcept(new string[] { "Player", "Bat" }),
+        QueryTriggerInteraction.Collide)
         .Length > 0;
 
 
@@ -50,22 +45,20 @@ public class Player : MonoBehaviour
         //make the camera follow the player
         cameraBaseControl.UpdateCameraPosition();
 
-        //if not swinging the bat or there is no lock, rotate the camera
-        if (bat.SwingingBat == false || onSwingLockCamera == false)
-        {
-            cameraBaseControl.UpdateRotation(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-        }
+        //rotate the camera
+        cameraBaseControl.UpdateRotation(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
     }
 
     void OnDrawGizmosSelected()
     {
         //draw check ground
         Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position + center, radius);
 
-        //matrix to use transform.rotation
-        Matrix4x4 rotationMatrix = Matrix4x4.TRS(transform.position, transform.rotation, transform.lossyScale);
-        Gizmos.matrix = rotationMatrix;
-        Gizmos.DrawWireCube(center, size);
+        ////matrix to use transform.rotation
+        //Matrix4x4 rotationMatrix = Matrix4x4.TRS(transform.position, transform.rotation, transform.lossyScale);
+        //Gizmos.matrix = rotationMatrix;
+        //Gizmos.DrawWireCube(center, size);
     }
 
     #region private API
