@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     [SerializeField] Vector3 center = Vector3.zero;
     [SerializeField] float radius = 2;
 
+    [Header("Bat (used by options menu)")]
+    public Bat[] batsToSwing;
+
     //check in a sphere, if hit something other than player and bat
     bool IsGrounded => Physics.OverlapSphere(
         transform.position + center,

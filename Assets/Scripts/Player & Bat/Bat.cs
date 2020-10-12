@@ -6,7 +6,6 @@ using redd096;
 public class Bat : MonoBehaviour
 {
     [Header("Important")]
-    public float rotationSpeed = 10;
     [Tooltip("Offset from camera position")] [SerializeField] Vector3 offset = Vector3.zero;
 
     [Header("Limit Rotation Bat")]
@@ -19,6 +18,8 @@ public class Bat : MonoBehaviour
     [Tooltip("Speed to reach for super hit")] [SerializeField] float speedThreshold = 20;
     [Tooltip("Particles to instantiate on super hit")] [SerializeField] ParticleSystem batParticles = default;
 
+
+    [HideInInspector] public float rotationSpeed;
     public bool SwingingBat { get; private set; }
     
 

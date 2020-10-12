@@ -35,13 +35,9 @@ public class SimpleOptions : MonoBehaviour
         slider_Fov.value = Camera.main.fieldOfView;
         text_Fov.text = "FOV: " + slider_Fov.value.ToString("F0");
 
-        slider_CameraSensitivity.value = GameManager.instance.player.cameraBaseControl.sensitivityX / 50;
-        text_CameraSensitivity.text = string_CameraSensitivity + slider_CameraSensitivity.value.ToString("F0");
-
-        slider_BatSensitivity.value = GameManager.instance.bat.rotationSpeed;
-        text_BatSensitivity.text = string_BatSensitivity + slider_BatSensitivity.value.ToString("F0");
-
-        //set scene by toggle in menu
+        //set scene by options menu
+        Slider_CameraSensitivity(slider_CameraSensitivity.value);
+        Slider_BatSensitivity(slider_BatSensitivity.value);
         Toggle_EnableVSync(toggle_EnableVSync.isOn);
         Toggle_Lock60FPS(toggle_Lock60FPS.isOn);
         Toggle_CameraShake(toggle_CameraShake.isOn);
@@ -69,8 +65,11 @@ public class SimpleOptions : MonoBehaviour
 
     public void Slider_BatSensitivity(float value)
     {
-        //set bat sensitivity
-        GameManager.instance.bat.rotationSpeed = value;
+        //set rotation speed for every bat
+        foreach(Bat bat in GameManager.instance.player.batsToSwing)
+        {
+            bat.rotationSpeed = value;
+        }
 
         //update text
         text_BatSensitivity.text = string_BatSensitivity + value.ToString("F0");
