@@ -68,7 +68,8 @@ public class SimpleOptions : MonoBehaviour
         //set rotation speed for every bat
         foreach(Bat bat in GameManager.instance.player.batsToSwing)
         {
-            bat.rotationSpeed = value;
+            if(bat != null)
+                bat.rotationSpeed = value;
         }
 
         //update text
