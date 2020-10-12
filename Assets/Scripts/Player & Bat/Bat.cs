@@ -67,12 +67,13 @@ public class Bat : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("POTENZA MAZZATA: " + rb.angularVelocity.magnitude);
+
         //if hitting with a lot of speed
         if(rb.angularVelocity.magnitude > speedThreshold)
         {
             SuperHit(collision);
         }
-
     }
 
     void LateUpdate()
