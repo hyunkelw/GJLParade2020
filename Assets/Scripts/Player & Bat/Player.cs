@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] Vector3 size = Vector3.one;
 
     [Header("Bat")]
-    [Tooltip("Bat to swing")] [SerializeField] Bat bat = default;
+    [Tooltip("Bat to swing")] public Bat bat = default;
     [Tooltip("When swinging bat, lock the camera?")] public bool onSwingLockCamera = false;
 
     //check in a box, if hit something other than the player

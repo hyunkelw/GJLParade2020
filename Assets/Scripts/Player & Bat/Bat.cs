@@ -6,6 +6,7 @@ using redd096;
 public class Bat : MonoBehaviour
 {
     [Header("Important")]
+    public float rotationSpeed = 10;
     [Tooltip("Offset from camera position")] [SerializeField] Vector3 offset = Vector3.zero;
 
     [Header("Limit Rotation Bat")]
@@ -103,7 +104,7 @@ public class Bat : MonoBehaviour
         return Physics.Raycast(ray, 100, layer, QueryTriggerInteraction.Collide);
     }
 
-    void SetInputRotation()
+    void OldSetInputRotation()
     {
         //mouse position to viewport (from 0,0 to 1,1)
         Vector3 viewportPosition = cam.ScreenToViewportPoint(Input.mousePosition);
@@ -118,6 +119,23 @@ public class Bat : MonoBehaviour
 
         //lerp input rotation
         inputRotation = rotation;// Quaternion.Lerp(inputRotation, rotation, Time.fixedDeltaTime * speedRotation);
+    }
+
+    void SetInputRotation()
+    {
+        //get input rotation on X and Y axis
+        Vector3 input = new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
+        input *= rotationSpeed;
+
+        //add to current rotation, with clamp
+        Vector3 euler = inputRotation.eulerAngles + input;
+        euler.x = Angle.NegativeAngle(euler.x, up, down);
+        euler.y = Angle.NegativeAngle(euler.y, left, right);
+
+        Quaternion rotation = Quaternion.Euler(euler);
+
+        //set input rotation
+        inputRotation = rotation;
     }
 
     void FollowCamPosition()
