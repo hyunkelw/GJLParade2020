@@ -15,7 +15,7 @@ public class Bat : MonoBehaviour
     [Tooltip("X axis to positive")] [SerializeField] float down = 30;
 
     [Header("Super Hit")]
-    [Tooltip("Speed to reach on hit, for super hit")] [SerializeField] float speedThreshold = 20;
+    [Tooltip("Speed to reach for super hit")] [SerializeField] float speedThreshold = 20;
     [Tooltip("Particles to instantiate on super hit")] [SerializeField] ParticleSystem batParticles = default;
 
     public bool SwingingBat { get; private set; }
@@ -66,8 +66,6 @@ public class Bat : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("velocity: " + rb.velocity.magnitude.ToString("F2") + " --- angular velocity: " + rb.angularVelocity.magnitude.ToString("F2"));
-
         //if hitting with a lot of speed
         if(rb.angularVelocity.magnitude > speedThreshold)
         {
