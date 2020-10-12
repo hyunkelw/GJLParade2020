@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d324b7514aef244fa06b45e1185bac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gravity: -3
   carpaTrail: {fileID: 6542170348887759520, guid: ec8452934afb1c54c8b6e3460a2fb6fc,
     type: 3}
 --- !u!1 &4292732457028444322

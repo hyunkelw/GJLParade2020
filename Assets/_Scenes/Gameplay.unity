@@ -2762,11 +2762,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7390654414470963817, guid: 82606f089ee957e46a430cdc7386e387,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7390654414470963818, guid: 82606f089ee957e46a430cdc7386e387,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2827,11 +2822,6 @@ PrefabInstance:
       propertyPath: bat
       value: 
       objectReference: {fileID: 1723304613}
-    - target: {fileID: 7390654414470963819, guid: 82606f089ee957e46a430cdc7386e387,
-        type: 3}
-      propertyPath: jump
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 7390654414470963828, guid: 82606f089ee957e46a430cdc7386e387,
         type: 3}
       propertyPath: m_Name
