@@ -5,11 +5,11 @@ using UnityEngine;
 public class Carp : MonoBehaviour
 {
     [Tooltip("Gravity on the fish when spawn")] [SerializeField] float gravity = -3;
-    [Tooltip("Particles to instantiate on super hit")] [SerializeField] ParticleSystem carpParticle = default;
-    [Tooltip("Trails to instantiate on super hit")] [SerializeField] TrailRenderer carpTrail = default;
+    [Tooltip("Particles to instantiate on super hit")] [SerializeField] ParticleSystem[] particlesPrefabs = default;
+    [Tooltip("Trails to instantiate on super hit")] [SerializeField] TrailRenderer[] trailsPrefabs = default;
 
-    ParticleSystem particle;
-    TrailRenderer trail;
+    ParticleSystem[] particles;
+    TrailRenderer[] trails;
 
     bool alreadyGavePoints;
 
@@ -57,20 +57,40 @@ public class Carp : MonoBehaviour
     public void SuperHit()
     {
         //instantiate particles
-        if (carpParticle != null)
+        if (particlesPrefabs != null && particlesPrefabs.Length > 0)
         {
-            if(particle == null)
-                particle = Instantiate(carpParticle, transform);
+            //if there is no reference, instantiate and save every particle
+            if(particles == null || particles.Length <= 0)
+            {
+                particles = new ParticleSystem[particlesPrefabs.Length];
+                for(int i = 0; i < particlesPrefabs.Length; i++)
+                {
+                    particles[i] = Instantiate(particlesPrefabs[i], transform);
+                }
+            }
 
             //restart if hit again
-            particle.Play(true);
+            foreach (ParticleSystem p in particles)
+            {
+                if (p != null)
+                {
+                    p.Play(true);
+                }
+            }
         }
 
         //instantiate trail
-        if (carpTrail != null)
+        if (trailsPrefabs != null && trailsPrefabs.Length > 0)
         {
-            if(trail == null)
-                trail = Instantiate(carpTrail, transform);
+            //if there is no reference, instantiate and save every trail
+            if (trails == null || trails.Length <= 0)
+            {
+                trails = new TrailRenderer[trailsPrefabs.Length];
+                for (int i = 0; i < trailsPrefabs.Length; i++)
+                {
+                    trails[i] = Instantiate(trailsPrefabs[i], transform);
+                }
+            }
         }
     }
 }

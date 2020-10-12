@@ -50,7 +50,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 503ba37627ac18c4ebe9bbe73d6ea9ad, type: 2}
+  - {fileID: 2100000, guid: 695873166113ab64997efed81c2426c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -71,7 +71,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 2
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 3
@@ -136,7 +136,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
-  m_Emitting: 0
+  m_Emitting: 1
 --- !u!1 &4105470480952168588
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,9 +146,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4428414583840772098}
-  - component: {fileID: 2237504393099432185}
+  - component: {fileID: 5345164547187216785}
   m_Layer: 0
-  m_Name: RainbowTrail2
+  m_Name: TRAIL_RainbowTrail3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,7 +162,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4105470480952168588}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.26, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 7590191096249963997}
@@ -175,7 +175,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!96 &2237504393099432185
+--- !u!96 &5345164547187216785
 TrailRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
@@ -194,7 +194,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 503ba37627ac18c4ebe9bbe73d6ea9ad, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -215,7 +215,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 5
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -271,7 +271,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
-  m_Emitting: 0
+  m_Emitting: 1
 --- !u!1 &4175957641013662066
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +322,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 503ba37627ac18c4ebe9bbe73d6ea9ad, type: 2}
+  - {fileID: 2100000, guid: 695873166113ab64997efed81c2426c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -343,7 +343,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 2
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 3
@@ -408,7 +408,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
-  m_Emitting: 0
+  m_Emitting: 1
 --- !u!1 &4850941377236628209
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,7 +459,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 503ba37627ac18c4ebe9bbe73d6ea9ad, type: 2}
+  - {fileID: 2100000, guid: 695873166113ab64997efed81c2426c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -480,7 +480,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 2
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 3
@@ -545,7 +545,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
-  m_Emitting: 0
+  m_Emitting: 1
 --- !u!1 &5914163664967537190
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,7 +596,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 503ba37627ac18c4ebe9bbe73d6ea9ad, type: 2}
+  - {fileID: 2100000, guid: 695873166113ab64997efed81c2426c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -617,7 +617,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 2
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 3
@@ -682,7 +682,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
-  m_Emitting: 0
+  m_Emitting: 1
 --- !u!1 &6696939203662001867
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,7 +733,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 503ba37627ac18c4ebe9bbe73d6ea9ad, type: 2}
+  - {fileID: 2100000, guid: 695873166113ab64997efed81c2426c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -754,7 +754,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 2
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 3
@@ -819,7 +819,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
-  m_Emitting: 0
+  m_Emitting: 1
 --- !u!1 &7414888335953866730
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,7 +870,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 503ba37627ac18c4ebe9bbe73d6ea9ad, type: 2}
+  - {fileID: 2100000, guid: 695873166113ab64997efed81c2426c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -891,7 +891,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 2
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 3
@@ -956,7 +956,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
-  m_Emitting: 0
+  m_Emitting: 1
 --- !u!1 &8310054090508931541
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,7 +1007,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 503ba37627ac18c4ebe9bbe73d6ea9ad, type: 2}
+  - {fileID: 2100000, guid: 695873166113ab64997efed81c2426c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1028,7 +1028,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 2
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 3
@@ -1093,4 +1093,4 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
-  m_Emitting: 0
+  m_Emitting: 1
