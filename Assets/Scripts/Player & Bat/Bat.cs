@@ -20,6 +20,7 @@ public class Bat : MonoBehaviour
     [Tooltip("Particles to instantiate on super hit")] [SerializeField] ParticleSystem batParticles = default;
 
     public bool SwingingBat { get; private set; }
+    
 
     Camera cam;
     Rigidbody rb;
@@ -157,6 +158,12 @@ public class Bat : MonoBehaviour
     {
         //pooling particles on the bat
         ParticleSystem go = poolingParticles.Instantiate(batParticles, collision.GetContact(0).point, Quaternion.identity);
+        var cameraShake = cam.GetComponent<CameraShaker>();
+        if (cameraShake.isActiveAndEnabled)
+        {
+            cameraShake.Shake();
+        }
+        
         go.Play(true);
 
         //if hit a carp
