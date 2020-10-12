@@ -20,6 +20,24 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4851337437158826473, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
+        type: 3}
+      propertyPath: carpaTrail
+      value: 
+      objectReference: {fileID: 2245193071036109915, guid: a613f0e3753184246b4f0e241732d649,
+        type: 3}
+    - target: {fileID: -4851337437158826473, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
+        type: 3}
+      propertyPath: carpParticle
+      value: 
+      objectReference: {fileID: 2245193071036109915, guid: a613f0e3753184246b4f0e241732d649,
+        type: 3}
+    - target: {fileID: -4851337437158826473, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
+        type: 3}
+      propertyPath: carpTrail
+      value: 
+      objectReference: {fileID: 2237504393099432185, guid: fcdde06e9b88880438f8dfb3ad39057a,
+        type: 3}
     - target: {fileID: 3519753346972297222, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
         type: 3}
       propertyPath: m_Name

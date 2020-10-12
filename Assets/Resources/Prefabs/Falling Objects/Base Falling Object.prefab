@@ -62,8 +62,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: -3
-  carpaTrail: {fileID: 6542170348887759520, guid: ec8452934afb1c54c8b6e3460a2fb6fc,
+  carpParticle: {fileID: 6542170348887759520, guid: ec8452934afb1c54c8b6e3460a2fb6fc,
     type: 3}
+  carpTrail: {fileID: 0}
 --- !u!1 &4292732457028444322
 GameObject:
   m_ObjectHideFlags: 0

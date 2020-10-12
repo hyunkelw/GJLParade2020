@@ -2948,7 +2948,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1805996480}
-  - {fileID: 8409873727696520889}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3266,7 +3265,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -3282,6 +3281,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1529909390}
+  - {fileID: 8409873727696520889}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3473,10 +3473,13 @@ MonoBehaviour:
   carps:
   - carpPrefab: {fileID: 6459628279652875095, guid: e60cbe4647b189c4dbc0e53786cd0d04,
       type: 3}
-    percentage: 90
+    percentage: 70
+  - carpPrefab: {fileID: 2345132684721314131, guid: 4c31e89ffc21bc34b97c93879e10e532,
+      type: 3}
+    percentage: 28
   - carpPrefab: {fileID: 7784002382337989079, guid: 4aad10b8af1824845892259e68d856dc,
       type: 3}
-    percentage: 10
+    percentage: 2
   delay: 1.5
   timeToDestroy: 15
 --- !u!4 &1760123120
@@ -4396,7 +4399,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1528671896}
+    m_TransformParent: {fileID: 1702824152}
     m_Modifications:
     - target: {fileID: 5026965596555701441, guid: 558e9efcdab5f9d42b1cee573ca0fcdd,
         type: 3}
@@ -4421,17 +4424,17 @@ PrefabInstance:
     - target: {fileID: 5026965596555701442, guid: 558e9efcdab5f9d42b1cee573ca0fcdd,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5026965596555701442, guid: 558e9efcdab5f9d42b1cee573ca0fcdd,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5026965596555701442, guid: 558e9efcdab5f9d42b1cee573ca0fcdd,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5026965596555701442, guid: 558e9efcdab5f9d42b1cee573ca0fcdd,
         type: 3}

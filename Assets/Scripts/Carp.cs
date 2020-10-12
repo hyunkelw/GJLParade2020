@@ -5,18 +5,11 @@ using UnityEngine;
 public class Carp : MonoBehaviour
 {
     [Tooltip("Gravity on the fish when spawn")] [SerializeField] float gravity = -3;
-    [Tooltip("Trail to instantiate on super hit")] [SerializeField] ParticleSystem carpaTrail = default;
+    [Tooltip("Particles to instantiate on super hit")] [SerializeField] ParticleSystem carpParticle = default;
+    [Tooltip("Trails to instantiate on super hit")] [SerializeField] TrailRenderer carpTrail = default;
 
-    ParticleSystem trail = null;
-    ParticleSystem Trail { 
-        get 
-        {
-            //if null, instantiate
-            if (trail == null)
-                trail = Instantiate(carpaTrail, transform);
-            
-            return trail;
-        } }
+    ParticleSystem particle;
+    TrailRenderer trail;
 
     bool alreadyGavePoints;
 
@@ -63,7 +56,21 @@ public class Carp : MonoBehaviour
 
     public void SuperHit()
     {
-        //active trail
-        Trail.Play(true);
+        //instantiate particles
+        if (carpParticle != null)
+        {
+            if(particle == null)
+                particle = Instantiate(carpParticle, transform);
+
+            //restart if hit again
+            particle.Play(true);
+        }
+
+        //instantiate trail
+        if (carpTrail != null)
+        {
+            if(trail == null)
+                trail = Instantiate(carpTrail, transform);
+        }
     }
 }
