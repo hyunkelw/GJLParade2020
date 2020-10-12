@@ -6,21 +6,21 @@ using redd096;
 public class Bat : MonoBehaviour
 {
     [Header("Important")]
-    [SerializeField] float speedRotation = 5;
-    [SerializeField] Vector3 offset = Vector3.zero;
+    [Tooltip("Speed lerp rotation")] [SerializeField] float speedRotation = 5;
+    [Tooltip("Offset from camera position")] [SerializeField] Vector3 offset = Vector3.zero;
 
-    [Header("Limit Bat")]
+    [Header("Limit Rotation Bat")]
     [Tooltip("Y axis to negative")] [SerializeField] float left = -75;
     [Tooltip("Y axis to positive")] [SerializeField] float right = 75;
     [Tooltip("X axis to negative")] [SerializeField] float up = -50;
     [Tooltip("X axis to positive")] [SerializeField] float down = 30;
 
+    public bool SwingingBat { get; private set; }
+
     Camera cam;
     Rigidbody rb;
 
-    Quaternion lastBatRotation = Quaternion.identity;
-
-    public bool SwingingBat { get; private set; }
+    Quaternion inputRotation = Quaternion.identity;
 
     void Start()
     {
@@ -30,6 +30,13 @@ public class Bat : MonoBehaviour
 
     void Update()
     {
+        //if pause, stop controlling bat
+        if(Time.timeScale <= 0)
+        {
+            SwingingBat = false;
+            return;
+        }
+
         //on click
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -38,7 +45,7 @@ public class Bat : MonoBehaviour
             {
                 SwingingBat = true;
 
-                //show cursors
+                //unlock cursor
                 Utility.LockMouse(CursorLockMode.Confined);
             }
         }
@@ -48,22 +55,27 @@ public class Bat : MonoBehaviour
             //swinging false
             SwingingBat = false;
 
-            //hide cursors
+            //lock cursor
             Utility.LockMouse(CursorLockMode.Locked);
+        }
+    }
+
+    void LateUpdate()
+    {
+        //set input rotation
+        if (SwingingBat)
+        {
+            SetInputRotation();
         }
     }
 
     void FixedUpdate()
     {
-        //rotate bat
-        if (SwingingBat)
-        {
-            RotateBat();
-        }
-
-        //follow cam position and rotation
+        //follow cam position
         FollowCamPosition();
-        FollowCamRotation();
+
+        //rotate bat
+        RotateBat();
     }
 
     #region private API
@@ -77,20 +89,7 @@ public class Bat : MonoBehaviour
         return Physics.Raycast(ray, 100, layer, QueryTriggerInteraction.Collide);
     }
 
-    void RotateBat()
-    {
-        //get target rotation (mouse position)
-        Quaternion targetRotation = GetTargetRotation();
-
-        //lerp rotation
-        Quaternion rotation = Quaternion.Lerp(rb.rotation, targetRotation, Time.fixedDeltaTime * speedRotation);
-
-        //move bat
-        rb.MoveRotation(rotation);
-        lastBatRotation = rotation;
-    }
-
-    Quaternion GetTargetRotation()
+    void SetInputRotation()
     {
         //mouse position to viewport (from 0,0 to 1,1)
         Vector3 viewportPosition = cam.ScreenToViewportPoint(Input.mousePosition);
@@ -101,22 +100,25 @@ public class Bat : MonoBehaviour
 
         //rotation on X and Y axis
         Vector3 euler = new Vector3(upDown, leftRight, 0);
-        return Quaternion.Euler(euler);
+        Quaternion rotation = Quaternion.Euler(euler);
+
+        //lerp input rotation
+        inputRotation = Quaternion.Lerp(inputRotation, rotation, Time.fixedDeltaTime * speedRotation);
     }
 
     void FollowCamPosition()
     {
-        //player position + offset
+        //cam position + offset
         Vector3 targetPosition = cam.transform.position + Direction.WorldToLocalDirection(offset, cam.transform.rotation);
 
         //move bat
         rb.MovePosition(targetPosition);
     }
 
-    void FollowCamRotation()
+    void RotateBat()
     {
-        //rotate bat
-        rb.MoveRotation(cam.transform.rotation * lastBatRotation);
+        //camera rotation + input rotation
+        rb.MoveRotation(cam.transform.rotation * inputRotation);
     }
 
     #endregion

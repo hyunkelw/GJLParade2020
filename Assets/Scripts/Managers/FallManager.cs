@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class FallManager : MonoBehaviour
 {
-    [SerializeField] Collider[] areas = default;
-    [SerializeField] GameObject[] prefabs = default;
-    [SerializeField] float delay = 1.5f;
+    [Tooltip("Area spawn objects")] [SerializeField] Collider[] areas = default;
+    [Tooltip("Prefabs to instantiate")] [SerializeField] GameObject[] prefabs = default;
+    [Tooltip("Delay between spawn")] [SerializeField] float delay = 1.5f;
+    [Tooltip("Time to destroy objects")] [SerializeField] float timeToDestroy = 15;
 
     float time;
 
@@ -38,6 +39,6 @@ public class FallManager : MonoBehaviour
         obj.transform.rotation = Random.rotation;
 
         //destroy after few seconds
-        Destroy(obj, 15);
+        Destroy(obj, timeToDestroy);
     }
 }

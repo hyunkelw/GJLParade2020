@@ -89,6 +89,7 @@ MonoBehaviour:
     minY: -60
     maxY: 60
   bat: {fileID: 0}
+  onSwingLockCamera: 0
 --- !u!54 &7390654414470963817
 Rigidbody:
   m_ObjectHideFlags: 0

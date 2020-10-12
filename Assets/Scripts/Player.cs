@@ -6,11 +6,12 @@ using redd096;
 public class Player : MonoBehaviour
 {
     [Header("Player")]
-    [SerializeField] float speed = 5;
+    [Tooltip("Speed movement")] [SerializeField] float speed = 5;
     [SerializeField] CameraBaseControl cameraBaseControl = default;
 
     [Header("Bat")]
-    [SerializeField] Bat bat = default;
+    [Tooltip("Bat to swing")] [SerializeField] Bat bat = default;
+    [Tooltip("When swinging bat, lock the camera?")] [SerializeField] bool onSwingLockCamera = false;
 
     Rigidbody rb;
 
@@ -33,8 +34,8 @@ public class Player : MonoBehaviour
         //make the camera follow the player
         cameraBaseControl.UpdateCameraPosition();
 
-        //if not swinging the bat, rotate the camera
-        if (bat.SwingingBat == false)
+        //if not swinging the bat or there is no lock, rotate the camera
+        if (bat.SwingingBat == false || onSwingLockCamera == false)
         {
             cameraBaseControl.UpdateRotation(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         }
@@ -53,6 +54,15 @@ public class Player : MonoBehaviour
 
         //move rigidbody
         rb.velocity = velocity;
+    }
+
+    #endregion
+
+    #region public API
+
+    public void Toggle_OnSwingLockCamera(bool isEnabled)
+    {
+        onSwingLockCamera = isEnabled;
     }
 
     #endregion

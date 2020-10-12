@@ -6,16 +6,16 @@
     public class GameManager : Singleton<GameManager>
     {
         public UIManager uiManager { get; private set; }
-        public Bat bat { get; private set; }
+        public Player player { get; private set; }
 
         protected override void SetDefaults()
         {
             //get references
             uiManager = FindObjectOfType<UIManager>();
-            bat = FindObjectOfType<Bat>();
+            player = FindObjectOfType<Player>();
             
             //if there is a player, lock mouse
-            if (bat)
+            if (player)
             {
                 FindObjectOfType<SceneLoader>().ResumeGame();
             }
