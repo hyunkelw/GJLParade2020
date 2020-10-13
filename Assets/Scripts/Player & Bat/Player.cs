@@ -25,7 +25,6 @@ public class Player : MonoBehaviour
         QueryTriggerInteraction.Collide)
         .Length > 0;
 
-
     Rigidbody rb;
 
     void Start()
@@ -38,9 +37,14 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        //movement
-        Movement(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        //jump
         Jump(Input.GetButtonDown("Jump"));
+    }
+
+    void FixedUpdate()
+    {
+        //move
+        Movement(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
     }
 
     void LateUpdate()
@@ -68,18 +72,19 @@ public class Player : MonoBehaviour
 
     void Movement(float inputHorizontal, float inputVertical)
     {
-        //get direction by input
+        //get velocity by input
         Vector3 direction = Direction.WorldToLocalDirection(new Vector3(inputHorizontal, 0, inputVertical), transform.rotation);
-
-        //set velocity
         Vector3 velocity = direction * speed;
-        velocity = Vector3.ClampMagnitude(velocity, speed);
-        
-        //don't touch Y axis
-        velocity.y = rb.velocity.y;
-        
+
+        //remove previous velocity
+        Vector3 velocityChange = (velocity - rb.velocity);
+
+        //remove Y axis, then clamp
+        velocityChange.y = 0;
+        velocityChange = Vector3.ClampMagnitude(velocityChange, speed);
+
         //move rigidbody
-        rb.velocity = velocity;
+        rb.AddForce(velocityChange, ForceMode.VelocityChange);
     }
 
     void Jump(bool inputJump)
@@ -88,7 +93,7 @@ public class Player : MonoBehaviour
         if (inputJump && IsGrounded)
         {
             //change Y axis velocity
-            rb.velocity = new Vector3(rb.velocity.x, jump, rb.velocity.z);
+            rb.AddForce(transform.up * jump, ForceMode.VelocityChange);
         }
     }
 
