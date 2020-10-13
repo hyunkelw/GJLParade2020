@@ -52,8 +52,14 @@ public class Player : MonoBehaviour
         //make the camera follow the player
         cameraBaseControl.UpdateCameraPosition();
 
+#if UNITY_ANDROID
+
+#else
+
         //rotate the camera
         cameraBaseControl.UpdateRotation(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+
+#endif
     }
 
     void OnDrawGizmosSelected()
@@ -68,7 +74,7 @@ public class Player : MonoBehaviour
         //Gizmos.DrawWireCube(center, size);
     }
 
-    #region private API
+#region private API
 
     void Movement(float inputHorizontal, float inputVertical)
     {
@@ -97,5 +103,5 @@ public class Player : MonoBehaviour
         }
     }
 
-    #endregion
+#endregion
 }

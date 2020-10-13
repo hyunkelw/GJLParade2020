@@ -15,7 +15,7 @@ public class Bat : MonoBehaviour
     [Tooltip("X axis to positive")] [SerializeField] float down = 30;
 
     [Header("Super Hit")]
-    [Tooltip("Speed to reach for super hit")] [SerializeField] float speedThreshold = 20;
+    [Tooltip("Speed to reach for super hit")] public float speedThreshold = 20;
     [Tooltip("Particles to instantiate on super hit")] [SerializeField] ParticleSystem batParticles = default;
 
 
@@ -44,27 +44,48 @@ public class Bat : MonoBehaviour
             return;
         }
 
-        //on click
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+#if UNITY_ANDROID
+
+        if (Input.touchCount <= 0)
+            return;
+
+        Touch touch = Input.GetTouch(0);
+
+        //if touch
+        if(touch.phase == TouchPhase.Began)
         {
-            //if hit the bat, swinging true
-            //if (CheckClickOnBat())
+            //if click the bat, start swing
+            if(CheckTouchOnBat())
             {
                 SwingingBat = true;
-
-                //unlock cursor
-                Utility.LockMouse(CursorLockMode.Confined);
             }
         }
-        //on release
+        //on release, stop swing
+        else if(touch.phase == TouchPhase.Canceled || touch.phase == TouchPhase.Ended)
+        {
+            SwingingBat = false;
+        }
+
+#else
+
+        //on click, start swing
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            SwingingBat = true;
+
+            //unlock cursor
+            Utility.LockMouse(CursorLockMode.Confined);
+        }
+        //on release, stop swing
         else if(Input.GetKeyUp(KeyCode.Mouse0))
         {
-            //swinging false
             SwingingBat = false;
 
             //lock cursor
             Utility.LockMouse(CursorLockMode.Locked);
         }
+
+#endif
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -98,30 +119,13 @@ public class Bat : MonoBehaviour
 
     #region private API
 
-    bool CheckClickOnBat()
+    bool CheckTouchOnBat()
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        Ray ray = cam.ScreenPointToRay(Input.GetTouch(0).position);
         int layer = CreateLayer.LayerOnly("Bat");
 
         //return if hit the bat
         return Physics.Raycast(ray, 100, layer, QueryTriggerInteraction.Collide);
-    }
-
-    void OldSetInputRotation()
-    {
-        //mouse position to viewport (from 0,0 to 1,1)
-        Vector3 viewportPosition = cam.ScreenToViewportPoint(Input.mousePosition);
-
-        //from left to right, from down to up
-        float leftRight = Mathf.Lerp(left, right, viewportPosition.x);
-        float upDown = Mathf.Lerp(down, up, viewportPosition.y);
-
-        //rotation on X and Y axis
-        Vector3 euler = new Vector3(upDown, leftRight, 0);
-        Quaternion rotation = Quaternion.Euler(euler);
-
-        //lerp input rotation
-        inputRotation = rotation;// Quaternion.Lerp(inputRotation, rotation, Time.fixedDeltaTime * speedRotation);
     }
 
     void SetInputRotation()
