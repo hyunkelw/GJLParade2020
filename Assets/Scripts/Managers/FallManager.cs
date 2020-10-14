@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using DG.Tweening;
 using UnityEngine;
 
 [System.Serializable]
@@ -11,12 +10,22 @@ public struct CarpStruct
 
 public class FallManager : MonoBehaviour
 {
-    [Tooltip("Area spawn objects")] [SerializeField] Collider[] areas = default;
-    [Tooltip("Prefabs to instantiate")] [SerializeField] CarpStruct[] carps = default;
-    [Tooltip("Delay between spawn")] [SerializeField] float delay = 1.5f;
-    [Tooltip("Time to destroy objects")] [SerializeField] float timeToDestroy = 15;
+    [Tooltip("Area spawn objects")]
+    [SerializeField] private Collider[] areas = default;
+    [Tooltip("Prefabs to instantiate")] 
+    [SerializeField] private CarpStruct[] carps = default;
+    [Tooltip("Delay between spawn")] 
+    [SerializeField] private float delay = 1.5f;
+    [Tooltip("Time to destroy objects")] 
+    [SerializeField] private float timeToDestroy = 15;
+    [SerializeField] private bool jump;
+    [SerializeField] [Range(0f, 10f)] private float minJumpPower;
+    [SerializeField] [Range(0f, 10f)] private float maxJumpPower;
+    [SerializeField] [Range(0f, 10f)] private float minDuration;
+    [SerializeField] [Range(0f, 10f)] private float maxDuration;
 
     float time;
+    
 
     public bool IsSpawning { get; set; } = false;
 
@@ -68,6 +77,12 @@ public class FallManager : MonoBehaviour
     {
         //instantiate carp
         Carp carp = Instantiate(carpPrefab, randomPosition, Random.rotation);
+        if (jump)
+        {
+            var jumpPower = Random.Range(minJumpPower, maxJumpPower);
+            var duration = Random.Range(minDuration, maxDuration);
+            carp.GetComponent<Rigidbody>().DOJump(GameManager.instance.player.transform.position, jumpPower, 1, duration);
+        }
 
         //destroy after few seconds
         Destroy(carp.gameObject, timeToDestroy);
