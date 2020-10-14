@@ -6298,7 +6298,7 @@ MonoBehaviour:
   areas:
   - {fileID: 2099119164}
   carps:
-  - carpPrefab: {fileID: 6459628279652875095, guid: e60cbe4647b189c4dbc0e53786cd0d04,
+  - carpPrefab: {fileID: 7784002382337989079, guid: 4aad10b8af1824845892259e68d856dc,
       type: 3}
     percentage: 100
   delay: 1.5

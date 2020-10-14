@@ -12,12 +12,4 @@ public class Shrinker : MonoBehaviour
         transform.DOScale(newSize, shrinkTime);
                  //.SetRelative();
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Shrink();
-        }
-    }
 }
