@@ -3,18 +3,21 @@
     using System.Collections;
     using UnityEngine;
     using UnityEngine.UI;
+    using TMPro;
 
     [AddComponentMenu("redd096/Singletons/Utility Singleton")]
     public class UtilitySingleton : Singleton<UtilitySingleton>
     {
         #region Write Letter By Letter
 
+        Coroutine writing;
+
         #region private API
 
         /// <summary>
         /// When press to skip, accelerate speed
         /// </summary>
-        IEnumerator WriteLetterByLetter_Coroutine(Text textToSet, string value, float timeBetweenChar, float skipSpeed, System.Action onEndWrite, bool canSkip, bool wait)
+        IEnumerator WriteLetterByLetter_Coroutine(TextMeshProUGUI textToSet, string value, float timeBetweenChar, float skipSpeed, System.Action onEndWrite, bool canSkip, bool wait)
         {
             textToSet.text = string.Empty;
 
@@ -58,7 +61,7 @@
         /// <summary>
         /// When press to skip, set immediatly all text
         /// </summary>
-        IEnumerator WriteLetterByLetter_Coroutine(Text textToSet, string value, float timeBetweenChar, System.Action onEndWrite, bool canSkip, bool wait)
+        IEnumerator WriteLetterByLetter_Coroutine(TextMeshProUGUI textToSet, string value, float timeBetweenChar, System.Action onEndWrite, bool canSkip, bool wait)
         {
             bool skipped = false;
             textToSet.text = string.Empty;
@@ -109,33 +112,45 @@
         /// <summary>
         /// Write a text letter by letter, then wait input. When press to skip, accelerate speed
         /// </summary>
-        public void WriteLetterByLetterAndWait(Text textToSet, string value, float timeBetweenChar, float skipSpeed, System.Action onEndWrite = null, bool canSkip = true)
+        public void WriteLetterByLetterAndWait(TextMeshProUGUI textToSet, string value, float timeBetweenChar, float skipSpeed, System.Action onEndWrite = null, bool canSkip = true)
         {
-            StartCoroutine(WriteLetterByLetter_Coroutine(textToSet, value, timeBetweenChar, skipSpeed, onEndWrite, canSkip, true));
+            if (writing != null)
+                StopCoroutine(writing);
+
+            writing = StartCoroutine(WriteLetterByLetter_Coroutine(textToSet, value, timeBetweenChar, skipSpeed, onEndWrite, canSkip, true));
         }
 
         /// <summary>
         /// Write a text letter by letter, then wait input. When press to skip, set immediatly all text
         /// </summary>
-        public void WriteLetterByLetterAndWait(Text textToSet, string value, float timeBetweenChar, System.Action onEndWrite = null, bool canSkip = true)
+        public void WriteLetterByLetterAndWait(TextMeshProUGUI textToSet, string value, float timeBetweenChar, System.Action onEndWrite = null, bool canSkip = true)
         {
-            StartCoroutine(WriteLetterByLetter_Coroutine(textToSet, value, timeBetweenChar, onEndWrite, canSkip, true));
+            if (writing != null)
+                StopCoroutine(writing);
+
+            writing = StartCoroutine(WriteLetterByLetter_Coroutine(textToSet, value, timeBetweenChar, onEndWrite, canSkip, true));
         }
 
         /// <summary>
         /// Write a text letter by letter. When press to skip, accelerate speed
         /// </summary>
-        public void WriteLetterByLetter(Text textToSet, string value, float timeBetweenChar, float skipSpeed, System.Action onEndWrite = null, bool canSkip = true)
+        public void WriteLetterByLetter(TextMeshProUGUI textToSet, string value, float timeBetweenChar, float skipSpeed, System.Action onEndWrite = null, bool canSkip = true)
         {
-            StartCoroutine(WriteLetterByLetter_Coroutine(textToSet, value, timeBetweenChar, skipSpeed, onEndWrite, canSkip, false));
+            if (writing != null)
+                StopCoroutine(writing);
+
+            writing = StartCoroutine(WriteLetterByLetter_Coroutine(textToSet, value, timeBetweenChar, skipSpeed, onEndWrite, canSkip, false));
         }
 
         /// <summary>
         /// Write a text letter by letter. When press to skip, set immediatly all text
         /// </summary>
-        public void WriteLetterByLetter(Text textToSet, string value, float timeBetweenChar, System.Action onEndWrite = null, bool canSkip = true)
+        public void WriteLetterByLetter(TextMeshProUGUI textToSet, string value, float timeBetweenChar, System.Action onEndWrite = null, bool canSkip = true)
         {
-            StartCoroutine(WriteLetterByLetter_Coroutine(textToSet, value, timeBetweenChar, onEndWrite, canSkip, false));
+            if (writing != null)
+                StopCoroutine(writing);
+
+            writing = StartCoroutine(WriteLetterByLetter_Coroutine(textToSet, value, timeBetweenChar, onEndWrite, canSkip, false));
         }
 
         #endregion

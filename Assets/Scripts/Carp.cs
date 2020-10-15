@@ -42,7 +42,7 @@ public class Carp : MonoBehaviour
                 alreadyGavePoints = true;
             }
         }
-    }
+    }    
 
     IEnumerator Fall_Coroutine()
     {

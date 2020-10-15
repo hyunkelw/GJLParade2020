@@ -6,19 +6,19 @@ using UnityEngine;
 public struct CarpStruct
 {
     public Carp carpPrefab;
-    [Range(1, 100)] public int percentage;
+    [Range(0, 100)] public int percentage;
 }
 
 public class FallManager : MonoBehaviour
 {
-    [Tooltip("Area spawn objects")] [SerializeField] Collider[] areas = default;
+    [Tooltip("Area spawn objects")] [SerializeField] List<Collider> areas = new List<Collider>();
     [Tooltip("Prefabs to instantiate")] [SerializeField] CarpStruct[] carps = default;
     [Tooltip("Delay between spawn")] [SerializeField] float delay = 1.5f;
     [Tooltip("Time to destroy objects")] [SerializeField] float timeToDestroy = 15;
 
     float time;
 
-    public bool IsSpawning { get; set; } = false;
+    public bool IsSpawning = false;
 
     void Update()
     {
@@ -35,8 +35,11 @@ public class FallManager : MonoBehaviour
 
     void CreateObject()
     {
+        if (areas == null || areas.Count <= 0)
+            return;
+
         //select one area
-        Collider area = areas[Random.Range(0, areas.Length)];
+        Collider area = areas[Random.Range(0, areas.Count)];
 
         //random position inside the area
         Vector3 center = area.bounds.center;
@@ -71,5 +74,16 @@ public class FallManager : MonoBehaviour
 
         //destroy after few seconds
         Destroy(carp.gameObject, timeToDestroy);
+    }
+
+    public void AddArea(Collider col)
+    {
+        areas.Add(col);
+    }
+
+    public void RemoveArea(Collider col)
+    {
+        if(areas.Contains(col))
+            areas.Remove(col);
     }
 }

@@ -17,11 +17,12 @@ public class EventOnHit : MonoBehaviour
             {
                 //call event in inspector
                 response?.Invoke();
-
-                //remove freeze position and stop event subscriber
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                enabled = false;
             }
         }
+    }
+
+    public void RemoveFreezePosition()
+    {
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
     }
 }

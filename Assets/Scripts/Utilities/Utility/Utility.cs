@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.UI;
+    using TMPro;
 
     public static class Utility
     {
@@ -248,7 +249,7 @@
         /// <summary>
         /// Write a text letter by letter, then wait input. When press to skip, accelerate speed
         /// </summary>
-        public static void WriteLetterByLetterAndWait(this Text textToSet, string value, float timeBetweenChar, float skipSpeed, System.Action onEndWrite = null, bool canSkip = true)
+        public static void WriteLetterByLetterAndWait(this TextMeshProUGUI textToSet, string value, float timeBetweenChar, float skipSpeed, System.Action onEndWrite = null, bool canSkip = true)
         {
             UtilitySingleton.instance.WriteLetterByLetterAndWait(textToSet, value, timeBetweenChar, skipSpeed, onEndWrite, canSkip);
         }
@@ -256,7 +257,7 @@
         /// <summary>
         /// Write a text letter by letter, then wait input. When press to skip, set immediatly all text
         /// </summary>
-        public static void WriteLetterByLetterAndWait(this Text textToSet, string value, float timeBetweenChar, System.Action onEndWrite = null, bool canSkip = true)
+        public static void WriteLetterByLetterAndWait(this TextMeshProUGUI textToSet, string value, float timeBetweenChar, System.Action onEndWrite = null, bool canSkip = true)
         {
             UtilitySingleton.instance.WriteLetterByLetterAndWait(textToSet, value, timeBetweenChar, onEndWrite, canSkip);
         }
@@ -264,7 +265,7 @@
         /// <summary>
         /// Write a text letter by letter. When press to skip, accelerate speed
         /// </summary>
-        public static void WriteLetterByLetter(this Text textToSet, string value, float timeBetweenChar, float skipSpeed, System.Action onEndWrite = null, bool canSkip = true)
+        public static void WriteLetterByLetter(this TextMeshProUGUI textToSet, string value, float timeBetweenChar, float skipSpeed, System.Action onEndWrite = null, bool canSkip = true)
         {
             UtilitySingleton.instance.WriteLetterByLetter(textToSet, value, timeBetweenChar, skipSpeed, onEndWrite, canSkip);
         }
@@ -272,7 +273,7 @@
         /// <summary>
         /// Write a text letter by letter. When press to skip, set immediatly all text
         /// </summary>
-        public static void WriteLetterByLetter(this Text textToSet, string value, float timeBetweenChar, System.Action onEndWrite = null, bool canSkip = true)
+        public static void WriteLetterByLetter(this TextMeshProUGUI textToSet, string value, float timeBetweenChar, System.Action onEndWrite = null, bool canSkip = true)
         {
             UtilitySingleton.instance.WriteLetterByLetter(textToSet, value, timeBetweenChar, onEndWrite, canSkip);
         }
