@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!65 &7080129744991067000
+--- !u!65 &1388463791066773433
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11,7 +11,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8501848, y: 1.0935706, z: 0.76483035}
+  m_Size: {x: 2.125462, y: 2.7339268, z: 1.912076}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1187281957413495479
 PrefabInstance:
@@ -103,7 +103,7 @@ PrefabInstance:
     - target: {fileID: 3519753346972297222, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
         type: 3}
       propertyPath: m_Name
-      value: Base Falling Object Variant
+      value: Dynamite Carp
       objectReference: {fileID: 0}
     - target: {fileID: 8485115476585702137, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
         type: 3}

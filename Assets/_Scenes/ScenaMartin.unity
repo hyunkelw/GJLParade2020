@@ -516,7 +516,6 @@ GameObject:
   - component: {fileID: 154338170}
   - component: {fileID: 154338169}
   - component: {fileID: 154338168}
-  - component: {fileID: 154338172}
   m_Layer: 0
   m_Name: Area
   m_TagString: Untagged
@@ -592,25 +591,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 154338167}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 8, z: -10}
+  m_LocalPosition: {x: 0, y: 9, z: -6}
   m_LocalScale: {x: 4, y: 1, z: 4}
   m_Children: []
   m_Father: {fileID: 1760123120}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &154338172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 154338167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f2ac1dafc0ed62419eef3a6b3f76b06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates: []
 --- !u!1 &273221513
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,7 +606,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 273221515}
-  - component: {fileID: 273221514}
   m_Layer: 0
   m_Name: Island
   m_TagString: Untagged
@@ -628,19 +613,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &273221514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 273221513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11153e720c678ac40b0402776ad42d4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eventToSubscribe: {fileID: 0}
 --- !u!4 &273221515
 Transform:
   m_ObjectHideFlags: 0
@@ -1393,6 +1365,7 @@ GameObject:
   - component: {fileID: 650108580}
   - component: {fileID: 650108579}
   - component: {fileID: 650108578}
+  - component: {fileID: 650108581}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -1475,6 +1448,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650108576}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &650108581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650108576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5907a76cbadb9974a9100a6678d23ae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shrinkFactor: 2
+  shrinkTime: 2
 --- !u!1 &683816398
 GameObject:
   m_ObjectHideFlags: 0
@@ -5116,16 +5103,20 @@ MonoBehaviour:
   carps:
   - carpPrefab: {fileID: 6459628279652875095, guid: e60cbe4647b189c4dbc0e53786cd0d04,
       type: 3}
-    percentage: 70
+    percentage: 100
   - carpPrefab: {fileID: 2345132684721314131, guid: 4c31e89ffc21bc34b97c93879e10e532,
       type: 3}
-    percentage: 30
+    percentage: 0
   - carpPrefab: {fileID: 7784002382337989079, guid: 4aad10b8af1824845892259e68d856dc,
       type: 3}
-    percentage: 100
+    percentage: 0
   delay: 1.5
   timeToDestroy: 15
-  IsSpawning: 1
+  jump: 0
+  minJumpPower: 5.68
+  maxJumpPower: 7.5
+  minDuration: 2
+  maxDuration: 3
 --- !u!4 &1760123120
 Transform:
   m_ObjectHideFlags: 0
@@ -6357,29 +6348,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7390654414470963819, guid: 82606f089ee957e46a430cdc7386e387,
         type: 3}
-      propertyPath: batsToSwing.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7390654414470963819, guid: 82606f089ee957e46a430cdc7386e387,
-        type: 3}
       propertyPath: batsToSwing.Array.data[0]
       value: 
       objectReference: {fileID: 2380435056811857352}
-    - target: {fileID: 7390654414470963819, guid: 82606f089ee957e46a430cdc7386e387,
-        type: 3}
-      propertyPath: batsToSwing.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7390654414470963819, guid: 82606f089ee957e46a430cdc7386e387,
-        type: 3}
-      propertyPath: batsToSwing.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7390654414470963819, guid: 82606f089ee957e46a430cdc7386e387,
-        type: 3}
-      propertyPath: batsToSwing.Array.data[3]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7390654414470963828, guid: 82606f089ee957e46a430cdc7386e387,
         type: 3}
       propertyPath: m_Name

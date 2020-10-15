@@ -5,7 +5,7 @@ using UnityEngine;
 public struct CarpStruct
 {
     public Carp carpPrefab;
-    [Range(1, 100)] public int percentage;
+    [Range(0, 100)] public int percentage;
 }
 
 public class FallManager : MonoBehaviour
@@ -18,11 +18,11 @@ public class FallManager : MonoBehaviour
     [SerializeField] private float delay = 1.5f;
     [Tooltip("Time to destroy objects")] 
     [SerializeField] private float timeToDestroy = 15;
-    [SerializeField] private bool jump;
-    [SerializeField] [Range(0f, 10f)] private float minJumpPower;
-    [SerializeField] [Range(0f, 10f)] private float maxJumpPower;
-    [SerializeField] [Range(0f, 10f)] private float minDuration;
-    [SerializeField] [Range(0f, 10f)] private float maxDuration;
+    [SerializeField] private bool jump = false;
+    [SerializeField] [Range(0f, 10f)] private float minJumpPower = 0;
+    [SerializeField] [Range(0f, 10f)] private float maxJumpPower = 0;
+    [SerializeField] [Range(0f, 10f)] private float minDuration = 0;
+    [SerializeField] [Range(0f, 10f)] private float maxDuration = 0;
 
     float time;
     

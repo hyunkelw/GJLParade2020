@@ -56,13 +56,24 @@ public class Carp : MonoBehaviour
     public void SuperHit()
     {
         //instantiate particles
+        InstantiateParticles();
+
+        //instantiate trail
+        InstantiateTrail();
+    }
+
+    #region super hit
+
+    void InstantiateParticles()
+    {
+        //instantiate particles
         if (particlesPrefabs != null && particlesPrefabs.Length > 0)
         {
             //if there is no reference, instantiate and save every particle
-            if(particles == null || particles.Length <= 0)
+            if (particles == null || particles.Length <= 0)
             {
                 particles = new ParticleSystem[particlesPrefabs.Length];
-                for(int i = 0; i < particlesPrefabs.Length; i++)
+                for (int i = 0; i < particlesPrefabs.Length; i++)
                 {
                     particles[i] = Instantiate(particlesPrefabs[i], transform);
                 }
@@ -77,7 +88,10 @@ public class Carp : MonoBehaviour
                 }
             }
         }
+    }
 
+    void InstantiateTrail()
+    {
         //instantiate trail
         if (trailsPrefabs != null && trailsPrefabs.Length > 0)
         {
@@ -92,4 +106,6 @@ public class Carp : MonoBehaviour
             }
         }
     }
+
+    #endregion
 }

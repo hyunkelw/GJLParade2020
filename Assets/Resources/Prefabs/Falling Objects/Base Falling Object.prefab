@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8485115476585702137}
   - component: {fileID: 7154767377556785436}
   - component: {fileID: -4851337437158826473}
+  - component: {fileID: -6180057105369606847}
   m_Layer: 10
   m_Name: Base Falling Object
   m_TagString: Untagged
@@ -65,6 +66,18 @@ MonoBehaviour:
   particlesPrefabs:
   - {fileID: 6542170348887759520, guid: ec8452934afb1c54c8b6e3460a2fb6fc, type: 3}
   trailsPrefabs: []
+--- !u!114 &-6180057105369606847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3519753346972297222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 673e1d1f9df9fcc48a42dc4c70e57764, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4292732457028444322
 GameObject:
   m_ObjectHideFlags: 0

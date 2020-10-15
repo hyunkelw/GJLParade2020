@@ -83,14 +83,14 @@ public class Player : MonoBehaviour
         Vector3 velocity = direction * speed;
 
         //remove previous velocity
-        Vector3 velocityChange = (velocity - rb.velocity);
+        //Vector3 velocityChange = (velocity - rb.velocity);
 
         //remove Y axis, then clamp
-        velocityChange.y = 0;
-        velocityChange = Vector3.ClampMagnitude(velocityChange, speed);
+        //velocityChange.y = 0;
+        velocity = Vector3.ClampMagnitude(velocity, speed);
 
         //move rigidbody
-        rb.AddForce(velocityChange, ForceMode.VelocityChange);
+        rb.AddForce(velocity, ForceMode.Acceleration);
     }
 
     void Jump(bool inputJump)
