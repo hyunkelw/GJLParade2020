@@ -1,7 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
-public class EventOnHit : redd096.EventSubscriber
+public class EventOnHit : MonoBehaviour
 {
+    [Header("Event to set")]
+    [SerializeField] UnityEvent response = new UnityEvent();
+
     void OnCollisionEnter(Collision collision)
     {
         //if hit a bat
@@ -12,7 +16,7 @@ public class EventOnHit : redd096.EventSubscriber
             if(bat.GetComponent<Rigidbody>().angularVelocity.magnitude > bat.speedThreshold)
             {
                 //call event in inspector
-                InvokeEvent();
+                response?.Invoke();
 
                 //remove freeze position and stop event subscriber
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;

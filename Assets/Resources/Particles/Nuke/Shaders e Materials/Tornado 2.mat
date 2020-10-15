@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Tornado 2
+  m_Shader: {fileID: -6465566751694194690, guid: d50e22661ff78d242bc00f7436753eba,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - Vector1_2355CDCE: 20
+    - Vector1_CCAF1109: 0.3
+    m_Colors:
+    - Color_E9D7EB9: {r: 1.6055588, g: 0.3110245, b: 0, a: 0.64705884}
+    - Vector2_915CFACC: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
