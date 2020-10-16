@@ -18,6 +18,9 @@ public class Bat : MonoBehaviour
     [Tooltip("Speed to reach for super hit")] public float speedThreshold = 20;
     [Tooltip("Particles to instantiate on super hit")] [SerializeField] ParticleSystem batParticles = default;
 
+    [Header("Debug")]
+    [SerializeField] bool showBatForce = false;
+
 
     [HideInInspector] public float rotationSpeed;
     public bool SwingingBat { get; private set; }
@@ -90,7 +93,8 @@ public class Bat : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("POTENZA MAZZATA: " + rb.angularVelocity.magnitude);
+        if(showBatForce)
+            Debug.Log("POTENZA MAZZATA: " + rb.angularVelocity.magnitude);
 
         //if hitting with a lot of speed
         if(rb.angularVelocity.magnitude > speedThreshold)

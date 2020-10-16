@@ -5103,13 +5103,13 @@ MonoBehaviour:
   carps:
   - carpPrefab: {fileID: 6459628279652875095, guid: e60cbe4647b189c4dbc0e53786cd0d04,
       type: 3}
-    percentage: 100
+    percentage: 60
   - carpPrefab: {fileID: 2345132684721314131, guid: 4c31e89ffc21bc34b97c93879e10e532,
       type: 3}
-    percentage: 0
+    percentage: 30
   - carpPrefab: {fileID: 7784002382337989079, guid: 4aad10b8af1824845892259e68d856dc,
       type: 3}
-    percentage: 0
+    percentage: 10
   delay: 1.5
   timeToDestroy: 15
   jump: 0
