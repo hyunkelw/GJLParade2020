@@ -7,15 +7,13 @@ public class FallDestroyer : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         //if hit player, game over
-        Player player = collision.gameObject.GetComponent<Player>();
-        if(player)
+        if(collision.gameObject.GetComponent<Player>())
         {
             GameManager.instance.levelManager.GameOver(false);
+            return;
         }
-        //else destroy object
-        else
-        {
-            Destroy(collision.gameObject);
-        }
+
+        //destroy object
+        Destroy(collision.gameObject);
     }
 }
