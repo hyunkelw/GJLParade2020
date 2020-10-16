@@ -25,10 +25,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7513faefb2d91d44adb8ee4d9504ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 8
-  force: 10
-  upwardsModifier: 50
+  radius: 10
+  force: 10000
+  upwardsModifier: 5000
   explodeOnCarpHit: 0
+  particles: {fileID: 0}
 --- !u!1001 &1187281957413495479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100,6 +101,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Carpa_Dinamite_LO
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 522a1340f9b8c3040846d63cd48217d6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 522a1340f9b8c3040846d63cd48217d6, type: 3}
