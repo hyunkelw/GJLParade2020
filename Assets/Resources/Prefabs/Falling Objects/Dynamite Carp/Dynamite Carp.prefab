@@ -26,9 +26,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 8
-  force: 40
-  upwardsModifier: 10
-  explodeOnCarpHit: 1
+  force: 10
+  upwardsModifier: 50
+  explodeOnCarpHit: 0
 --- !u!1001 &1187281957413495479
 PrefabInstance:
   m_ObjectHideFlags: 0

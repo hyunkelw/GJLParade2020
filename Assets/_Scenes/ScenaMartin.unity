@@ -4542,20 +4542,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areas:
-  - {fileID: 154338168}
+  - {fileID: 2099119164}
   carps:
   - carpPrefab: {fileID: 6459628279652875095, guid: e60cbe4647b189c4dbc0e53786cd0d04,
       type: 3}
-    percentage: 100
+    percentage: 90
   - carpPrefab: {fileID: 2345132684721314131, guid: 4c31e89ffc21bc34b97c93879e10e532,
       type: 3}
     percentage: 9
   - carpPrefab: {fileID: 7784002382337989079, guid: 4aad10b8af1824845892259e68d856dc,
       type: 3}
-    percentage: 1
+    percentage: 2
   delay: 1.5
   timeToDestroy: 15
-  jump: 0
+  jump: 1
   minJumpPower: 5.68
   maxJumpPower: 7.5
   minDuration: 2
@@ -5794,6 +5794,11 @@ PrefabInstance:
       propertyPath: batsToSwing.Array.data[0]
       value: 
       objectReference: {fileID: 2380435056811857352}
+    - target: {fileID: 7390654414470963819, guid: 82606f089ee957e46a430cdc7386e387,
+        type: 3}
+      propertyPath: fallMultiplier
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7390654414470963828, guid: 82606f089ee957e46a430cdc7386e387,
         type: 3}
       propertyPath: m_Name

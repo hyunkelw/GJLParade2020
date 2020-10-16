@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     [Header("Player")]
     [Tooltip("Speed movement")] [SerializeField] float speed = 5;
     [Tooltip("Jump force")] [SerializeField] float jump = 5;
+    [SerializeField] float fallMultiplier = 3;
+
     public CameraBaseControl cameraBaseControl = default;
 
     [Header("CheckGround")]
@@ -45,6 +47,10 @@ public class Player : MonoBehaviour
     {
         //move
         Movement(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+        }
     }
 
     void LateUpdate()
@@ -74,7 +80,7 @@ public class Player : MonoBehaviour
         //Gizmos.DrawWireCube(center, size);
     }
 
-#region private API
+    #region private API
 
     void Movement(float inputHorizontal, float inputVertical)
     {
@@ -103,5 +109,5 @@ public class Player : MonoBehaviour
         }
     }
 
-#endregion
+    #endregion
 }
