@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Gameplay.unity
     guid: 1a11d0c3ccbe4c44483010cd1714b24e
+  - enabled: 1
+    path: Assets/_Scenes/ScenaMartin.unity
+    guid: 5f341cd7212bff14387cd255e1fa69e4
   m_configObjects: {}
