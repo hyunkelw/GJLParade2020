@@ -135,11 +135,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dynamite Carp
       objectReference: {fileID: 0}
-    - target: {fileID: 3519753346972297222, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
-        type: 3}
-      propertyPath: m_TagString
-      value: Carp
-      objectReference: {fileID: 0}
     - target: {fileID: 4292732457028444322, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
         type: 3}
       propertyPath: m_TagString
