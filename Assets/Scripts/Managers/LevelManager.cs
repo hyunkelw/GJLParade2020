@@ -7,9 +7,8 @@ public class LevelManager : MonoBehaviour
     
     int score = 0;
 
-    [Header("Debug")]
-    public bool batMagnifyingEquipped;
-    public bool batCarpEquipped;
+    public bool batMagnifyingEquipped => GameManager.instance.player.batsToSwing.CompareTag("Bat Magnifying");
+    public bool batCarpEquipped => GameManager.instance.player.batsToSwing.CompareTag("Bat Carp");
 
     public void AddPoints(int points)
     {
@@ -47,15 +46,5 @@ public class LevelManager : MonoBehaviour
 
         //show end menu
         GameManager.instance.uiManager.EndMenu(true);
-    }
-
-    public void SetBatMagnifyingBat(bool equipped)
-    {
-        batMagnifyingEquipped = equipped;
-    }
-
-    public void SetBatCarp(bool equipped)
-    {
-        batCarpEquipped = equipped;
     }
 }

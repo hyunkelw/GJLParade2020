@@ -28,6 +28,13 @@ public class Bat : MonoBehaviour
     Quaternion inputRotation = Quaternion.identity;
     Pooling<ParticleSystem> poolingParticles = new Pooling<ParticleSystem>();
 
+    void Awake()
+    {
+        //deactive collider and start coroutine
+        GetComponent<Collider>().enabled = false;
+        StartCoroutine(ResetCollider());
+    }
+
     void Start()
     {
         cam = Camera.main;
@@ -118,6 +125,15 @@ public class Bat : MonoBehaviour
     }
 
     #region private API
+
+    IEnumerator ResetCollider()
+    {
+        //wait
+        yield return new WaitForSeconds(1);
+
+        //reset collider
+        GetComponent<Collider>().enabled = true;
+    }
 
     bool CheckTouchOnBat()
     {

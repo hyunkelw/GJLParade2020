@@ -22,7 +22,6 @@ MonoBehaviour:
   showBatForce: 0
   throwForce: 20000
   timeBeforeGetNewBat: 1
-  batBrokenPrefab: {fileID: 8059305082462604444}
 --- !u!1001 &5006056796148028008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -112,6 +111,11 @@ PrefabInstance:
     - target: {fileID: 8389116926845426425, guid: 6d66049e55e0b0a41a10d1a26876823b,
         type: 3}
       propertyPath: m_Name
+      value: Bat Broken
+      objectReference: {fileID: 0}
+    - target: {fileID: 8389116926845426425, guid: 6d66049e55e0b0a41a10d1a26876823b,
+        type: 3}
+      propertyPath: m_TagString
       value: Bat Broken
       objectReference: {fileID: 0}
     - target: {fileID: 8389116926845426430, guid: 6d66049e55e0b0a41a10d1a26876823b,

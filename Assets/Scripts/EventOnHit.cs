@@ -27,12 +27,6 @@ public class EventOnHit : MonoBehaviour
         }
     }
 
-    public void RemoveRigidbodyConstraints()
-    {
-        //remove freeze position and stop event subscriber
-        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-    }
-
     public void ResetHitAfterTime(float timeToWait)
     {
         //reset hit after few seconds

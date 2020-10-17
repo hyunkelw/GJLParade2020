@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] float radius = 2;
 
     [Header("Bat")]
-    [SerializeField] List<Bat> batsToSwing = new List<Bat>();
+    public Bat batsToSwing = default;
     [SerializeField] BatBroken batBrokenPrefab = default;
 
     public float batRotationSpeed { get; set; }
@@ -156,8 +156,8 @@ public class Player : MonoBehaviour
         Bat bat = Instantiate(batPrefab, transform.position, Quaternion.identity);
         bat.GetComponent<Rigidbody>().position = transform.position;
 
-        //add to list
-        batsToSwing.Add(bat);
+        //set current bat
+        batsToSwing = bat;
     }
 
     #endregion
@@ -179,11 +179,11 @@ public class Player : MonoBehaviour
             StopCoroutine(getNewBrokenBat_Coroutine);
 
         //destroy old bats in the world
-        foreach (Bat bat in batsToSwing)
-            Destroy(bat.gameObject);
+        if(batsToSwing != null)
+            Destroy(batsToSwing.gameObject);
 
         //remove bats from the list
-        batsToSwing.Clear();
+        //batsToSwing.Clear();
 
         //get new bat
         CreateBat(batPrefab);

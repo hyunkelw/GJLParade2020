@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - FxTemporaire
+  - Bat Standard
+  - Bat Magnifying
+  - Bat Carp
+  - Bat Broken
   layers:
   - Default
   - TransparentFX
