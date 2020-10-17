@@ -19,7 +19,7 @@ public class MainMenuBats : MonoBehaviour
         int bossKilled = PlayerPrefs.GetInt("Boss Killed", 0);
 
         //unlock bat carp with score
-        if(highScore > scoreForBatCarp)
+        if(highScore >= scoreForBatCarp)
         {
             batCarp.SetActive(true);
         }
