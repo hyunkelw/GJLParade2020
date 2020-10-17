@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
 
     [Header("Bat (used by options menu)")]
     public Bat[] batsToSwing;
+    [SerializeField] BatBroken batBrokenPrefab = default;
 
     //check in a sphere, if hit something other than player and bat
     bool IsGrounded => Physics.OverlapSphere(
@@ -129,6 +130,25 @@ public class Player : MonoBehaviour
         }
 
         applyFallMultiplier_Coroutine = null;
+    }
+
+    #endregion
+
+    #region public API
+
+    public void GetNewBat(float timeBeforeGetNewBat)
+    {
+        StartCoroutine(GetNewBat_Coroutine(timeBeforeGetNewBat));
+    }
+
+    IEnumerator GetNewBat_Coroutine(float timeBeforeGetNewBat)
+    {
+        //wait
+        yield return new WaitForSeconds(timeBeforeGetNewBat);
+
+        //get new bat broken
+        BatBroken batBroken = Instantiate(batBrokenPrefab, transform.position, Quaternion.identity);
+        batBroken.GetComponent<Rigidbody>().position = transform.position;
     }
 
     #endregion

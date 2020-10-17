@@ -16,17 +16,21 @@ public class FallManager : MonoBehaviour
     [SerializeField] private CarpStruct[] carps = default;
     [Tooltip("Delay between spawn")] 
     [SerializeField] private float delay = 1.5f;
-    [Tooltip("Jump")] 
+    [Header("Jump")] 
     [SerializeField] private bool jump = false;
     [SerializeField] [Range(0f, 10f)] private float minJumpPower = 0;
     [SerializeField] [Range(0f, 10f)] private float maxJumpPower = 0;
     [SerializeField] [Range(0f, 10f)] private float minDuration = 0;
     [SerializeField] [Range(0f, 10f)] private float maxDuration = 0;
+    [Header("Size multiplier on MagnifyingBat")]
+    [SerializeField] float sizeMultiplier = 2;
 
     float time;
     
 
     public bool IsSpawning { get; set; } = false;
+
+    public bool IsMagnifyingBat { get; set; } = false;
 
     void Update()
     {
@@ -76,6 +80,7 @@ public class FallManager : MonoBehaviour
     {
         //instantiate carp
         Carp carp = Instantiate(carpPrefab, randomPosition, Random.rotation);
+        CheckIsMagnifyingBat(carp);
         if (jump)
         {
             var jumpPower = Random.Range(minJumpPower, maxJumpPower);
@@ -83,5 +88,12 @@ public class FallManager : MonoBehaviour
             carp.Jump(GameManager.instance.player.transform.position, jumpPower, 1, duration);
             //carp.GetComponent<Rigidbody>().DOJump(GameManager.instance.player.transform.position, jumpPower, 1, duration);
         }
+    }
+
+    void CheckIsMagnifyingBat(Carp carp)
+    {
+        //if is magnifying bat, apply multiplier
+        if (IsMagnifyingBat)
+            carp.transform.localScale *= sizeMultiplier;
     }
 }

@@ -15,9 +15,8 @@ public class Carp : MonoBehaviour
     bool alreadyGavePoints;
 
     Rigidbody rb;
-
-    [HideInInspector] public bool canDestroy = false;
     private Tween jumping;
+
 
     private void OnEnable()
     {
@@ -41,9 +40,8 @@ public class Carp : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         //if still falling by coroutine, stop and use gravity
-        if (rb.useGravity == false && collision.gameObject.GetComponent<FallDestroyer>() == false)
-        {
-            canDestroy = true;
+        if (rb.useGravity == false)
+        { 
             rb.useGravity = true;
             jumping.Kill();
             if (isCheatingActive)
@@ -85,6 +83,7 @@ public class Carp : MonoBehaviour
         //instantiate trail
         InstantiateTrail();
 
+        //if has explosive, set super hit
         Explosive explosive = GetComponent<Explosive>();
         if (explosive)
         {
