@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 
 public class Carp : MonoBehaviour
@@ -28,9 +27,6 @@ public class Carp : MonoBehaviour
     void Start()
     {
         rb.useGravity = false;
-
-        //start falling
-        //StartCoroutine(Fall_Coroutine());
     }
 
     public void Jump(Vector3 position, float jumpPower, int numJumps, float duration)
@@ -69,32 +65,6 @@ public class Carp : MonoBehaviour
                 GameManager.instance.levelManager.AddPoints(objective.PointsOnHit);
                 alreadyGavePoints = true;
             }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        //only if not already gave points
-        if (alreadyGavePoints == false)
-        {
-            //if hit objective
-            Objective objective = other.GetComponentInParent<Objective>();
-            if (objective != null)
-            {
-                //add points on hit
-                GameManager.instance.levelManager.AddPoints(objective.PointsOnHit);
-                alreadyGavePoints = true;
-            }
-        }
-    }
-
-    IEnumerator Fall_Coroutine()
-    {
-        //move by script instead of gravity
-        while(rb.useGravity == false)
-        {
-            rb.velocity = Vector3.up * gravity;
-            yield return null;
         }
     }
 
