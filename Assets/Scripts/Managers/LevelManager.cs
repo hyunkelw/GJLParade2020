@@ -24,6 +24,12 @@ public class LevelManager : MonoBehaviour
 
         //update UI
         GameManager.instance.uiManager.UpdateScore(score);
+
+        //if new high score, save it
+        if(PlayerPrefs.GetInt("High Score") < score)
+        {
+            PlayerPrefs.SetInt("High Score", score);
+        }
     }
 
     public void TriggeredTimerFinish()

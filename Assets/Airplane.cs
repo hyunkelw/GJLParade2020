@@ -48,5 +48,8 @@ public class Airplane : MonoBehaviour
     {
         rb.useGravity = true;
         patrol.Kill();
+
+        //save objective
+        PlayerPrefs.SetInt("Airplane Destroyed", 1);
     }
 }
