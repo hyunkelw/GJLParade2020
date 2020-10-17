@@ -17,9 +17,11 @@ public class Player : MonoBehaviour
     [SerializeField] Vector3 center = Vector3.zero;
     [SerializeField] float radius = 2;
 
-    [Header("Bat (used by options menu)")]
-    public Bat[] batsToSwing;
+    [Header("Bat")]
+    [SerializeField] List<Bat> batsToSwing = new List<Bat>();
     [SerializeField] BatBroken batBrokenPrefab = default;
+
+    public float batRotationSpeed { get; set; }
 
     //check in a sphere, if hit something other than player and bat
     bool IsGrounded => Physics.OverlapSphere(
@@ -31,6 +33,7 @@ public class Player : MonoBehaviour
 
     Rigidbody rb;
     Coroutine applyFallMultiplier_Coroutine;
+    Coroutine getNewBrokenBat_Coroutine;
 
     void Start()
     {
@@ -83,6 +86,8 @@ public class Player : MonoBehaviour
 
     #region private API
 
+    #region movement
+
     void Movement(float inputHorizontal, float inputVertical)
     {
         //get velocity by input
@@ -134,21 +139,54 @@ public class Player : MonoBehaviour
 
     #endregion
 
-    #region public API
+    #region bat
 
-    public void GetNewBat(float timeBeforeGetNewBat)
-    {
-        StartCoroutine(GetNewBat_Coroutine(timeBeforeGetNewBat));
-    }
-
-    IEnumerator GetNewBat_Coroutine(float timeBeforeGetNewBat)
+    IEnumerator GetNewBrokenBat_Coroutine(float timeBeforeGetNewBat)
     {
         //wait
         yield return new WaitForSeconds(timeBeforeGetNewBat);
 
         //get new bat broken
-        BatBroken batBroken = Instantiate(batBrokenPrefab, transform.position, Quaternion.identity);
-        batBroken.GetComponent<Rigidbody>().position = transform.position;
+        CreateBat(batBrokenPrefab);
+    }
+
+    void CreateBat(Bat batPrefab)
+    {
+        //create and set start position
+        Bat bat = Instantiate(batPrefab, transform.position, Quaternion.identity);
+        bat.GetComponent<Rigidbody>().position = transform.position;
+
+        //add to list
+        batsToSwing.Add(bat);
+    }
+
+    #endregion
+
+    #endregion
+
+    #region public API
+
+    public void GetNewBrokenBat(float timeBeforeGetNewBat)
+    {
+        //after few seconds, get new bat
+        getNewBrokenBat_Coroutine = StartCoroutine(GetNewBrokenBat_Coroutine(timeBeforeGetNewBat));
+    }
+
+    public void ChangeBat(Bat batPrefab)
+    {
+        //stop coroutine
+        if (getNewBrokenBat_Coroutine != null)
+            StopCoroutine(getNewBrokenBat_Coroutine);
+
+        //destroy old bats in the world
+        foreach (Bat bat in batsToSwing)
+            Destroy(bat.gameObject);
+
+        //remove bats from the list
+        batsToSwing.Clear();
+
+        //get new bat
+        CreateBat(batPrefab);
     }
 
     #endregion

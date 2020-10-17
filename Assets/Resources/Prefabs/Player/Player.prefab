@@ -96,6 +96,8 @@ MonoBehaviour:
   radius: 0.6
   batsToSwing:
   - {fileID: 0}
+  batBrokenPrefab: {fileID: 8059305082462604444, guid: 429baec26e4ef9b4e87c1771fdb140ac,
+    type: 3}
 --- !u!54 &7390654414470963817
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -8,20 +8,20 @@ public class BatBroken : Bat
     [SerializeField] float throwForce = 100;
     [SerializeField] float timeBeforeGetNewBat = 1;
 
-    bool isOnPlayer = true;
+    public bool isOnPlayer { get; private set; } = true;
 
     protected override void Update()
     {
         //instead of start swing, on click push the bat
         if (Input.GetKeyDown(KeyCode.Mouse0) && isOnPlayer)
         {
+            //deactive, so can't push again
+            isOnPlayer = false;
+
             PushBat();
 
             //and give to player new bat
-            GameManager.instance.player.GetNewBat(timeBeforeGetNewBat);
-
-            //deactive, so can't push again
-            isOnPlayer = false;
+            GameManager.instance.player.GetNewBrokenBat(timeBeforeGetNewBat);
         }
     }
 
@@ -32,6 +32,13 @@ public class BatBroken : Bat
         {
             base.FixedUpdate();
         }
+    }
+
+    protected override void OnCollisionEnter(Collision collision)
+    {
+        //if is not on player, then is pushed, so super hit
+        if(isOnPlayer == false)
+            SuperHit(collision);
     }
 
     void PushBat()

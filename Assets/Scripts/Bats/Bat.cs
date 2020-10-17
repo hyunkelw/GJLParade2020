@@ -21,12 +21,10 @@ public class Bat : MonoBehaviour
     [Header("Debug")]
     [SerializeField] bool showBatForce = false;
 
-    [HideInInspector] public float rotationSpeed;
-    public bool SwingingBat { get; private set; }    
-
     Camera cam;
     Rigidbody rb;
 
+    bool SwingingBat;
     Quaternion inputRotation = Quaternion.identity;
     Pooling<ParticleSystem> poolingParticles = new Pooling<ParticleSystem>();
 
@@ -89,7 +87,7 @@ public class Bat : MonoBehaviour
 #endif
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected virtual void OnCollisionEnter(Collision collision)
     {
         if(showBatForce)
             Debug.Log("POTENZA MAZZATA: " + rb.angularVelocity.magnitude);
@@ -134,7 +132,7 @@ public class Bat : MonoBehaviour
     {
         //get input rotation on X and Y axis
         Vector3 input = new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0);
-        input *= rotationSpeed;
+        input *= GameManager.instance.player.batRotationSpeed;
 
         //add to current rotation, with clamp
         Vector3 euler = inputRotation.eulerAngles + input;
@@ -162,7 +160,7 @@ public class Bat : MonoBehaviour
         rb.MoveRotation(cam.transform.rotation * inputRotation);
     }
 
-    void SuperHit(Collision collision)
+    protected void SuperHit(Collision collision)
     {
         //pooling particles on the bat
         ParticleSystem go = poolingParticles.Instantiate(batParticles, collision.GetContact(0).point, Quaternion.identity);        
