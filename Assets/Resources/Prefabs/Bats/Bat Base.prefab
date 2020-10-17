@@ -163,7 +163,7 @@ MonoBehaviour:
   up: -50
   down: 30
   speedThreshold: 20
-  batParticles: {fileID: 0}
+  batParticles: {fileID: 19800004, guid: d88534c222bdd8c48aeefce586e59d27, type: 3}
   showBatForce: 0
 --- !u!54 &8389116926845426428
 Rigidbody:
