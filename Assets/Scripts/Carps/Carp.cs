@@ -61,6 +61,7 @@ public class Carp : MonoBehaviour
         //instantiate trail
         InstantiateTrail();
 
+        //if has explosive, set super hit
         Explosive explosive = GetComponent<Explosive>();
         if (explosive)
         {

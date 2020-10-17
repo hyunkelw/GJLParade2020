@@ -21,7 +21,6 @@ public class Bat : MonoBehaviour
     [Header("Debug")]
     [SerializeField] bool showBatForce = false;
 
-
     [HideInInspector] public float rotationSpeed;
     public bool SwingingBat { get; private set; }    
 
@@ -37,7 +36,7 @@ public class Bat : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    protected virtual void Update()
     {
         //if pause, stop controlling bat
         if(Time.timeScale <= 0)
@@ -111,7 +110,7 @@ public class Bat : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         //follow cam position
         FollowCamPosition();
