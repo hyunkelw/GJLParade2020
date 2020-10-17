@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Carp : MonoBehaviour
 {
-    [Tooltip("Gravity on the fish when spawn")] [SerializeField] float gravity = -3;
     [Tooltip("Particles to instantiate on super hit")] [SerializeField] ParticleSystem[] particlesPrefabs = default;
     [Tooltip("Trails to instantiate on super hit")] [SerializeField] TrailRenderer[] trailsPrefabs = default;
     [Tooltip("Cheater")] [SerializeField] bool isCheatingActive = default;
@@ -59,6 +58,21 @@ public class Carp : MonoBehaviour
         {
             //if hit objective
             Objective objective = collision.gameObject.GetComponent<Objective>();
+            if (objective != null)
+            {
+                //add points on hit
+                GameManager.instance.levelManager.AddPoints(objective.PointsOnHit);
+                alreadyGavePoints = true;
+            }
+        }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        //only if not already gave points
+        if (alreadyGavePoints == false)
+        {
+            //if hit objective
+            Objective objective = other.GetComponentInParent<Objective>();
             if (objective != null)
             {
                 //add points on hit
