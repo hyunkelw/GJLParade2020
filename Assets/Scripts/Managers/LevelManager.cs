@@ -2,11 +2,15 @@
 
 public class LevelManager : MonoBehaviour
 {
+    [Header("Magnifying Bat")]
+    [SerializeField] float sizeMultiplier = 2;
+
     [Header("Bat Carp")]
     [SerializeField] int multiplier = 2;
-    
+
     int score = 0;
 
+    public float SizeMultiplier => sizeMultiplier;
     public bool batMagnifyingEquipped => GameManager.instance.player.batsToSwing.CompareTag("Bat Magnifying");
     public bool batCarpEquipped => GameManager.instance.player.batsToSwing.CompareTag("Bat Carp");
 

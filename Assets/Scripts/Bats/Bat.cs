@@ -129,7 +129,7 @@ public class Bat : MonoBehaviour
     IEnumerator ResetCollider()
     {
         //wait
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.3f);
 
         //reset collider
         GetComponent<Collider>().enabled = true;

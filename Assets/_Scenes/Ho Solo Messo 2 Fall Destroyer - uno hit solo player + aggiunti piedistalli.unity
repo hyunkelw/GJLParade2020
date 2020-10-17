@@ -6233,6 +6233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 546f18d86b8e7ba4983b96e34d0cfa60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sizeMultiplier: 2
   multiplier: 2
 --- !u!4 &1557433830
 Transform:
@@ -6885,7 +6886,6 @@ MonoBehaviour:
   maxJumpPower: 7.5
   minDuration: 2
   maxDuration: 3
-  sizeMultiplier: 2
 --- !u!4 &1760123120
 Transform:
   m_ObjectHideFlags: 0

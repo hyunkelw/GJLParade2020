@@ -22,8 +22,6 @@ public class FallManager : MonoBehaviour
     [SerializeField] [Range(0f, 10f)] private float maxJumpPower = 0;
     [SerializeField] [Range(0f, 10f)] private float minDuration = 0;
     [SerializeField] [Range(0f, 10f)] private float maxDuration = 0;
-    [Header("Size multiplier on MagnifyingBat")]
-    [SerializeField] float sizeMultiplier = 2;
 
     float time;
     
@@ -92,6 +90,6 @@ public class FallManager : MonoBehaviour
     {
         //if is magnifying bat, apply multiplier
         if (GameManager.instance.levelManager.batMagnifyingEquipped)
-            carp.transform.localScale *= sizeMultiplier;
+            carp.transform.localScale *= GameManager.instance.levelManager.SizeMultiplier;
     }
 }
