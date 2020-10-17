@@ -14,6 +14,8 @@ public class Carp : MonoBehaviour
 
     Rigidbody rb;
 
+    [HideInInspector] public bool canDestroy = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -26,8 +28,11 @@ public class Carp : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         //if still falling by coroutine, stop and use gravity
-        if (rb.useGravity == false)
+        if (rb.useGravity == false && collision.gameObject.GetComponent<FallDestroyer>() == false)
+        {
+            canDestroy = true;
             rb.useGravity = true;
+        }
 
         //only if not already gave points
         if (alreadyGavePoints == false)
@@ -60,6 +65,12 @@ public class Carp : MonoBehaviour
 
         //instantiate trail
         InstantiateTrail();
+
+        Explosive explosive = GetComponent<Explosive>();
+        if (explosive)
+        {
+            explosive.superHit = true;
+        }
     }
 
     #region super hit

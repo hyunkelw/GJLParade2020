@@ -29,7 +29,10 @@ MonoBehaviour:
   force: 10000
   upwardsModifier: 5000
   explodeOnCarpHit: 0
-  particles: {fileID: 0}
+  particles: {fileID: 6838582286958913066, guid: 507f1e2230d4b0344a02b6aeecd6f092,
+    type: 3}
+  isOnlyOnSuperHit: 1
+  superHit: 0
 --- !u!1001 &1187281957413495479
 PrefabInstance:
   m_ObjectHideFlags: 0

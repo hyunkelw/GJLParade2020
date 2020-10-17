@@ -14,6 +14,9 @@ public class Explosive : MonoBehaviour
 
     [Header("Particles")]
     [SerializeField] GameObject particles = default;
+    [SerializeField] bool isOnlyOnSuperHit = false;
+
+    [HideInInspector] public bool superHit;
 
     bool alreadyExploded;
 
@@ -24,7 +27,7 @@ public class Explosive : MonoBehaviour
             return;
 
         //if is not bat or player
-        if(collision.gameObject.GetComponent<Bat>() == false && collision.gameObject.GetComponent<Player>() == false)
+        if(collision.gameObject.GetComponent<Bat>() == false && collision.gameObject.GetComponent<Player>() == false && collision.gameObject.GetComponent<FallDestroyer>() == false)
         {
             //if can explode on carp, or if not hit a carp (hit ground)
             if (explodeOnCarpHit || collision.gameObject.GetComponent<Carp>() == false)
@@ -32,6 +35,8 @@ public class Explosive : MonoBehaviour
                 //explosion
                 Explode();
             }
+
+            superHit = false;
         }
     }
 
@@ -89,8 +94,12 @@ public class Explosive : MonoBehaviour
 
     void ExplosionParticles()
     {
-        //if there is, instantiate particles at this position
-        if (particles != null)
-            Instantiate(particles, transform.position, Quaternion.identity);
+        //if is a super hit, or can instantiate particles always
+        if (superHit || isOnlyOnSuperHit == false)
+        {
+            //if there is, instantiate particles at this position
+            if (particles != null)
+                Instantiate(particles, transform.position, Quaternion.identity);
+        }
     }
 }

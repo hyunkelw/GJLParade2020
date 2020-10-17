@@ -16,8 +16,7 @@ public class FallManager : MonoBehaviour
     [SerializeField] private CarpStruct[] carps = default;
     [Tooltip("Delay between spawn")] 
     [SerializeField] private float delay = 1.5f;
-    [Tooltip("Time to destroy objects")] 
-    [SerializeField] private float timeToDestroy = 15;
+    [Tooltip("Jump")] 
     [SerializeField] private bool jump = false;
     [SerializeField] [Range(0f, 10f)] private float minJumpPower = 0;
     [SerializeField] [Range(0f, 10f)] private float maxJumpPower = 0;
@@ -83,8 +82,5 @@ public class FallManager : MonoBehaviour
             var duration = Random.Range(minDuration, maxDuration);
             carp.GetComponent<Rigidbody>().DOJump(GameManager.instance.player.transform.position, jumpPower, 1, duration);
         }
-
-        //destroy after few seconds
-        Destroy(carp.gameObject, timeToDestroy);
     }
 }

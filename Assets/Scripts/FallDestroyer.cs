@@ -13,6 +13,13 @@ public class FallDestroyer : MonoBehaviour
             return;
         }
 
+        //if hit carp and is falling by spawn, don't destroy
+        Carp carp = collision.gameObject.GetComponent<Carp>();
+        if (carp && carp.canDestroy == false)
+        {            
+            return;
+        }
+
         //destroy object
         Destroy(collision.gameObject);
     }
