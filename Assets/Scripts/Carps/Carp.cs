@@ -16,11 +16,13 @@ public class Carp : MonoBehaviour
 
     Rigidbody rb;
     private Tween jumping;
+    private Target targetComponent;
 
 
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody>();
+        targetComponent = GetComponent<Target>();
     }
 
     void Start()
@@ -50,6 +52,11 @@ public class Carp : MonoBehaviour
                 rb.DOMove(FindObjectOfType<Airplane>().transform.position, 2f).OnComplete(()=> rb.useGravity=true);
             }
         }
+        if (targetComponent != null)
+        {
+            targetComponent.enabled = false;
+        }
+        
 
         //only if not already gave points
         if (alreadyGavePoints == false)
