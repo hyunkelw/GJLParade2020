@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b585681922b28cf43a6b27cdd06abde9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &3947895260097289980
-SphereCollider:
+  health: 100
+  damageByCarp: 10
+  pushOnDie: 100
+  timeBlink: 0
+  blinkMaterial: {fileID: 2100000, guid: dc51f7d2aa3ed4048b978f7cfc722c49, type: 2}
+--- !u!65 &1324770935
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -23,8 +28,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.65
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.81850576, y: 0.65890455, z: 0.4463072}
+  m_Center: {x: -0.01583966, y: 0.17973085, z: 0.000000024626283}
 --- !u!1001 &354814876698117673
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37,40 +42,50 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss Carp
       objectReference: {fileID: 0}
+    - target: {fileID: 3519753346972297222, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
+        type: 3}
+      propertyPath: m_TagString
+      value: Boss Carp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7154767377556785436, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8485115476585702137, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 62.5
       objectReference: {fileID: 0}
     - target: {fileID: 8485115476585702137, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 33.9
       objectReference: {fileID: 0}
     - target: {fileID: 8485115476585702137, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -11.5
       objectReference: {fileID: 0}
     - target: {fileID: 8485115476585702137, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.08994929
       objectReference: {fileID: 0}
     - target: {fileID: 8485115476585702137, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.9741786
       objectReference: {fileID: 0}
     - target: {fileID: 8485115476585702137, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.019981693
       objectReference: {fileID: 0}
     - target: {fileID: 8485115476585702137, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.206121
       objectReference: {fileID: 0}
     - target: {fileID: 8485115476585702137, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
         type: 3}
@@ -80,17 +95,32 @@ PrefabInstance:
     - target: {fileID: 8485115476585702137, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -0.106000006
       objectReference: {fileID: 0}
     - target: {fileID: 8485115476585702137, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -156.097
       objectReference: {fileID: 0}
     - target: {fileID: 8485115476585702137, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -10.573001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8485115476585702137, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8485115476585702137, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8485115476585702137, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -6180057105369606847, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7, type: 3}

@@ -10,10 +10,15 @@ public class Boss : MonoBehaviour
     [SerializeField] float pushOnDie = 100;
 
     [Header("Blink")]
+    [SerializeField] private int blinkTimes;
     [SerializeField] float timeBlink;
     [SerializeField] Material blinkMaterial;
 
+    [SerializeField] GameObject nukeParticles;
+    [SerializeField] Transform nukePosition;
+
     Coroutine blink_Coroutine;
+    
 
     void Awake()
     {
@@ -36,11 +41,11 @@ public class Boss : MonoBehaviour
         health -= damageByCarp;
 
         //blink if not already blinking
-        if(blink_Coroutine == null)
+        if (blink_Coroutine == null)
             blink_Coroutine = StartCoroutine(Blink_Coroutine());
 
         //die
-        if(health <= 0)
+        if (health <= 0)
         {
             Die();
         }
@@ -49,16 +54,20 @@ public class Boss : MonoBehaviour
     IEnumerator Blink_Coroutine()
     {
         Renderer r = GetComponentInChildren<Renderer>();
-
-        //change material
         Material originalMat = r.material;
-        r.material = blinkMaterial;
 
-        //wait
-        yield return new WaitForSeconds(timeBlink);
+        for (int i = 0; i < blinkTimes; i++)
+        {
+            //change material
 
-        //back to original material
-        r.material = originalMat;
+            r.material = blinkMaterial;
+
+            //wait
+            yield return new WaitForSeconds(timeBlink);
+
+            //back to original material
+            r.material = originalMat;
+        }
 
         blink_Coroutine = null;
     }
@@ -70,7 +79,8 @@ public class Boss : MonoBehaviour
         //unlock rigidbody and push
         rb.constraints = RigidbodyConstraints.None;
         rb.AddForce(-transform.forward * pushOnDie, ForceMode.VelocityChange);
-
+        Instantiate(nukeParticles, nukePosition.position, Quaternion.identity);
+        Destroy(gameObject, 3f);
         //save to unlock bat
         PlayerPrefs.SetInt("Boss Killed", 1);
     }
