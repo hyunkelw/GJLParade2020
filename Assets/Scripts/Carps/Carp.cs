@@ -72,6 +72,22 @@ public class Carp : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        //only if not already gave points
+        if (alreadyGavePoints == false)
+        {
+            //if hit objective
+            Objective objective = other.GetComponentInParent<Objective>();
+            if (objective != null)
+            {
+                //add points on hit
+                GameManager.instance.levelManager.AddPoints(objective.PointsOnHit);
+                alreadyGavePoints = true;
+            }
+        }
+    }
+
     IEnumerator Fall_Coroutine()
     {
         //move by script instead of gravity
