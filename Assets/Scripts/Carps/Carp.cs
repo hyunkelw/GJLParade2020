@@ -14,8 +14,6 @@ public class Carp : MonoBehaviour
 
     Rigidbody rb;
 
-    [HideInInspector] public bool canDestroy = false;
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -28,11 +26,8 @@ public class Carp : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         //if still falling by coroutine, stop and use gravity
-        if (rb.useGravity == false && collision.gameObject.GetComponent<FallDestroyer>() == false)
-        {
-            canDestroy = true;
+        if (rb.useGravity == false)
             rb.useGravity = true;
-        }
 
         //only if not already gave points
         if (alreadyGavePoints == false)

@@ -27,7 +27,7 @@ public class Explosive : MonoBehaviour
             return;
 
         //if is not bat or player
-        if(collision.gameObject.GetComponent<Bat>() == false && collision.gameObject.GetComponent<Player>() == false && collision.gameObject.GetComponent<FallDestroyer>() == false)
+        if(collision.gameObject.GetComponent<Bat>() == false && collision.gameObject.GetComponent<Player>() == false)
         {
             //if can explode on carp, or if not hit a carp (hit ground)
             if (explodeOnCarpHit || collision.gameObject.GetComponent<Carp>() == false)
