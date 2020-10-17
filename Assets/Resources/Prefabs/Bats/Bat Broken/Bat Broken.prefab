@@ -18,7 +18,7 @@ MonoBehaviour:
   up: -50
   down: 30
   speedThreshold: 20
-  batParticles: {fileID: 19800004, guid: 663a1750721902246a284820975a0396, type: 3}
+  batParticles: {fileID: 0}
   showBatForce: 0
   throwForce: 20000
   timeBeforeGetNewBat: 1

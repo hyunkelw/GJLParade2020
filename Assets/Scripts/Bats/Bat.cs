@@ -179,8 +179,11 @@ public class Bat : MonoBehaviour
     protected void SuperHit(Collision collision)
     {
         //pooling particles on the bat
-        ParticleSystem go = poolingParticles.Instantiate(batParticles, collision.GetContact(0).point, Quaternion.identity);        
-        go.Play(true);
+        if (batParticles != null)
+        {
+            ParticleSystem go = poolingParticles.Instantiate(batParticles, collision.GetContact(0).point, Quaternion.identity);
+            go.Play(true);
+        }
 
         //if hit a carp, call his super hit
         Carp carp = collision.gameObject.GetComponent<Carp>();
