@@ -66,11 +66,7 @@ public class SimpleOptions : MonoBehaviour
     public void Slider_BatSensitivity(float value)
     {
         //set rotation speed for every bat
-        foreach(Bat bat in GameManager.instance.player.batsToSwing)
-        {
-            if(bat != null)
-                bat.rotationSpeed = value;
-        }
+        GameManager.instance.player.batRotationSpeed = value;
 
         //update text
         text_BatSensitivity.text = string_BatSensitivity + value.ToString("F0");
