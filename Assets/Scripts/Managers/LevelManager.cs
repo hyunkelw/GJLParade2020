@@ -2,13 +2,22 @@
 
 public class LevelManager : MonoBehaviour
 {
+    [Header("Bat Carp")]
+    [SerializeField] int multiplier = 2;
+    
+    int score = 0;
+
     [Header("Debug")]
-    [SerializeField] int score = 0;
+    public bool batMagnifyingEquipped;
+    public bool batCarpEquipped;
 
     public void AddPoints(int points)
     {
+        //BAT CARP!
+        int pointsToAdd = batCarpEquipped ? points * multiplier : points;
+
         //add score
-        score += points;
+        score += pointsToAdd;
 
         //update UI
         GameManager.instance.uiManager.UpdateScore(score);
@@ -38,5 +47,15 @@ public class LevelManager : MonoBehaviour
 
         //show end menu
         GameManager.instance.uiManager.EndMenu(true);
+    }
+
+    public void SetBatMagnifyingBat(bool equipped)
+    {
+        batMagnifyingEquipped = equipped;
+    }
+
+    public void SetBatCarp(bool equipped)
+    {
+        batCarpEquipped = equipped;
     }
 }

@@ -3654,6 +3654,7 @@ Transform:
   - {fileID: 1928549676}
   - {fileID: 566944249}
   - {fileID: 1699218690}
+  - {fileID: 1400204859}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4984,16 +4985,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400204858}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.3107, y: -61.893757, z: 59.110535}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 33.3107, y: -63.283756, z: 49.390533}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1445286616}
   - {fileID: 112867905}
   - {fileID: 1152116200}
   - {fileID: 1439499770}
-  m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_Father: {fileID: 1066941115}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1407327198
 GameObject:
@@ -6232,7 +6233,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 546f18d86b8e7ba4983b96e34d0cfa60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
+  multiplier: 2
+  batMagnifyingEquipped: 0
+  batCarpEquipped: 0
 --- !u!4 &1557433830
 Transform:
   m_ObjectHideFlags: 0
@@ -7572,17 +7575,6 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1699218689}
         m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1928549679}
-        m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

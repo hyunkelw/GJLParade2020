@@ -30,8 +30,6 @@ public class FallManager : MonoBehaviour
 
     public bool IsSpawning { get; set; } = false;
 
-    public bool IsMagnifyingBat { get; set; } = false;
-
     void Update()
     {
         //only if IsSpawning is active
@@ -93,7 +91,7 @@ public class FallManager : MonoBehaviour
     void CheckIsMagnifyingBat(Carp carp)
     {
         //if is magnifying bat, apply multiplier
-        if (IsMagnifyingBat)
+        if (GameManager.instance.levelManager.batMagnifyingEquipped)
             carp.transform.localScale *= sizeMultiplier;
     }
 }
