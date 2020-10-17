@@ -3123,7 +3123,7 @@ MonoBehaviour:
   - carpPrefab: {fileID: 7784002382337989079, guid: 4aad10b8af1824845892259e68d856dc,
       type: 3}
     percentage: 0
-  delay: 1.5
+  delay: 1
   jump: 1
   minJumpPower: 5.68
   maxJumpPower: 7.5
@@ -3299,6 +3299,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408532773179417957, guid: f3bf4da33a1890a47bcdf0c87323e38e,
+        type: 3}
+      propertyPath: speedThreshold
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3bf4da33a1890a47bcdf0c87323e38e, type: 3}
