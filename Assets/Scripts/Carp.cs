@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Carp : MonoBehaviour
+public class Carp : MonoBehaviour, IHittable
 {
     [Tooltip("Gravity on the fish when spawn")] [SerializeField] float gravity = -3;
     [Tooltip("Particles to instantiate on super hit")] [SerializeField] ParticleSystem[] particlesPrefabs = default;
@@ -25,6 +25,10 @@ public class Carp : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Bat")
+        {
+            OnBeingHit();
+        }
         //if still falling by coroutine, stop and use gravity
         if (rb.useGravity == false)
             rb.useGravity = true;
@@ -91,5 +95,15 @@ public class Carp : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void Register()
+    {
+        Debug.Log("registering");
+    }
+
+    public void OnBeingHit()
+    {
+        GameManager.instance.levelManager.AddObjectHit(this);
     }
 }
