@@ -16,8 +16,8 @@ public class EventOnHit : MonoBehaviour
         Bat bat = collision.gameObject.GetComponent<Bat>();
         if(bat && canHit)
         {
-            //if super hit
-            if(bat.GetComponent<Rigidbody>().angularVelocity.magnitude > bat.speedThreshold)
+            //if super hit - or is broken bat and is on no player (so pushed)
+            if(bat.GetComponent<Rigidbody>().angularVelocity.magnitude > bat.speedThreshold || bat is BatBroken && bat.GetComponent<BatBroken>().isOnPlayer == false)
             {
                 canHit = false;
 
