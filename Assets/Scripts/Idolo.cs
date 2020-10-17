@@ -30,6 +30,7 @@ public class Idolo : MonoBehaviour
         if(idolosInScene == null || idolosInScene.Count <= 0)
         {
             //activate boss
+            GameManager.instance.levelManager.GetComponent<SpawnBoss>().Spawn();
         }
     }
 }
