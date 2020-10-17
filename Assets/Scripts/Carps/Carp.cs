@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 public class Carp : MonoBehaviour
@@ -6,6 +7,7 @@ public class Carp : MonoBehaviour
     [Tooltip("Gravity on the fish when spawn")] [SerializeField] float gravity = -3;
     [Tooltip("Particles to instantiate on super hit")] [SerializeField] ParticleSystem[] particlesPrefabs = default;
     [Tooltip("Trails to instantiate on super hit")] [SerializeField] TrailRenderer[] trailsPrefabs = default;
+    [Tooltip("Cheater")] [SerializeField] bool isCheatingActive = default;
 
     ParticleSystem[] particles;
     TrailRenderer[] trails;
@@ -15,15 +17,26 @@ public class Carp : MonoBehaviour
     Rigidbody rb;
 
     [HideInInspector] public bool canDestroy = false;
+    private Tween jumping;
+
+    private void OnEnable()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
 
         //start falling
-        StartCoroutine(Fall_Coroutine());
+        //StartCoroutine(Fall_Coroutine());
     }
+
+    public void Jump(Vector3 position, float jumpPower, int numJumps, float duration)
+    {
+        jumping = rb.DOJump(position, jumpPower, numJumps, duration);
+    }
+
 
     void OnCollisionEnter(Collision collision)
     {
@@ -32,6 +45,12 @@ public class Carp : MonoBehaviour
         {
             canDestroy = true;
             rb.useGravity = true;
+            jumping.Kill();
+            if (isCheatingActive)
+            {
+                rb.useGravity = false;
+                rb.DOMove(FindObjectOfType<Airplane>().transform.position, 2f).OnComplete(()=> rb.useGravity=true);
+            }
         }
 
         //only if not already gave points

@@ -1,4 +1,4 @@
-﻿using DG.Tweening;
+﻿
 using UnityEngine;
 
 [System.Serializable]
@@ -80,7 +80,8 @@ public class FallManager : MonoBehaviour
         {
             var jumpPower = Random.Range(minJumpPower, maxJumpPower);
             var duration = Random.Range(minDuration, maxDuration);
-            carp.GetComponent<Rigidbody>().DOJump(GameManager.instance.player.transform.position, jumpPower, 1, duration);
+            carp.Jump(GameManager.instance.player.transform.position, jumpPower, 1, duration);
+            //carp.GetComponent<Rigidbody>().DOJump(GameManager.instance.player.transform.position, jumpPower, 1, duration);
         }
     }
 }

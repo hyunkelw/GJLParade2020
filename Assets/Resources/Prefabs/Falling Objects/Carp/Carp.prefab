@@ -20,6 +20,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4851337437158826473, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
+        type: 3}
+      propertyPath: isCheatingActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3519753346972297222, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
         type: 3}
       propertyPath: m_Name
