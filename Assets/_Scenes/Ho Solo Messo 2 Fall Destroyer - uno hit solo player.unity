@@ -6275,6 +6275,8 @@ MonoBehaviour:
   maxJumpPower: 7.5
   minDuration: 2
   maxDuration: 3
+  sizeMultiplier: 2
+  IsMagnifyingBat: 0
 --- !u!4 &1760123120
 Transform:
   m_ObjectHideFlags: 0
