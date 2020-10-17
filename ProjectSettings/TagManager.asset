@@ -9,6 +9,8 @@ TagManager:
   - Bat Magnifying
   - Bat Carp
   - Bat Broken
+  - Carp
+  - Boss Carp
   layers:
   - Default
   - TransparentFX
