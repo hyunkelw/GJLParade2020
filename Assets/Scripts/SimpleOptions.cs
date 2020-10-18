@@ -26,8 +26,10 @@ public class SimpleOptions : MonoBehaviour
     [Header("Lock 60 FPS")]
     [SerializeField] Toggle toggle_Lock60FPS = default;
 
-    [Header("Camera Shake")]
-    [SerializeField] Toggle toggle_CameraShake = default;
+    [Header("Volume")]
+    [SerializeField] Text text_Volume = default;
+    [SerializeField] Slider slider_Volume = default;
+    [SerializeField] string string_Volume = "Volume: ";
 
     void Start()
     {
@@ -40,7 +42,7 @@ public class SimpleOptions : MonoBehaviour
         Slider_BatSensitivity(slider_BatSensitivity.value);
         Toggle_EnableVSync(toggle_EnableVSync.isOn);
         Toggle_Lock60FPS(toggle_Lock60FPS.isOn);
-        Toggle_CameraShake(toggle_CameraShake.isOn);
+        Slider_Volume(slider_Volume.value);
     }
 
     #region public API
@@ -84,10 +86,13 @@ public class SimpleOptions : MonoBehaviour
         Application.targetFrameRate = isEnabled ? 60 : -1;
     }
 
-    public void Toggle_CameraShake(bool isEnabled)
+    public void Slider_Volume(float value)
     {
-        //active/deactive camera shaker
-        Camera.main.GetComponent<CameraShaker>().enabled = isEnabled;
+        //set volume
+        AudioListener.volume = value;
+
+        //update text
+        text_Volume.text = string_Volume + (value * 10).ToString("F0");
     }
 
     #endregion
