@@ -5,6 +5,7 @@ using UnityEngine;
 public class Idolo : MonoBehaviour
 {
     static List<Idolo> idolosInScene = new List<Idolo>();
+    [SerializeField] Material hittedMaterial = default;
 
     void Start()
     {
@@ -18,6 +19,9 @@ public class Idolo : MonoBehaviour
         if(idolosInScene.Contains(this) && collision.gameObject.GetComponent<Carp>())
         {
             idolosInScene.Remove(this);
+
+            //change material
+            GetComponentInChildren<Renderer>().material = hittedMaterial;
 
             //and try activate boss
             TryActivateBoss();

@@ -5,10 +5,10 @@ using System.Collections;
 
 public class BossAppearance : MonoBehaviour
 {
-    [SerializeField] private Image panel;
-    [SerializeField] private GameObject boss;
-    [SerializeField] private Player player;
-    [SerializeField] private Camera cam;
+    [SerializeField] private Image panel = default;
+    [SerializeField] private GameObject boss = default;
+    [SerializeField] private Player player = default;
+    [SerializeField] private Camera cam = default;
     [SerializeField] private float fadeTime = 3f;
     private void Update()
     {
