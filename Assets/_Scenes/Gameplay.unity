@@ -196,14 +196,6 @@ PrefabInstance:
       propertyPath: patrolPoints.Array.data[7]
       value: 
       objectReference: {fileID: 2098942859}
-    - target: {fileID: 700577398, guid: 3444229c786522a4eb5456cc7015d734, type: 3}
-      propertyPath: aereoCade
-      value: 
-      objectReference: {fileID: 8300000, guid: 266d74112e44f75448bc5c513eee7ed2, type: 3}
-    - target: {fileID: 1057259616, guid: 3444229c786522a4eb5456cc7015d734, type: 3}
-      propertyPath: PointsOnHit
-      value: 5000
-      objectReference: {fileID: 0}
     - target: {fileID: 6981229744237415334, guid: 3444229c786522a4eb5456cc7015d734,
         type: 3}
       propertyPath: m_Name
