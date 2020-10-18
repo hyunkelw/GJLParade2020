@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Objective : MonoBehaviour
 {
     public int PointsOnHit = 10;
+    public bool actsOnTrigger = false;
 }

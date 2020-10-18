@@ -33,7 +33,6 @@ public class Carp : MonoBehaviour
         jumping = rb.DOJump(position, jumpPower, numJumps, duration);
     }
 
-
     void OnCollisionEnter(Collision collision)
     {
         //if still falling by coroutine, stop and use gravity
@@ -58,7 +57,7 @@ public class Carp : MonoBehaviour
         {
             //if hit objective
             Objective objective = collision.gameObject.GetComponent<Objective>();
-            if (objective != null)
+            if (objective != null && !objective.actsOnTrigger)
             {
                 //add points on hit
                 GameManager.instance.levelManager.AddPoints(objective.PointsOnHit);
@@ -73,7 +72,7 @@ public class Carp : MonoBehaviour
         {
             //if hit objective
             Objective objective = other.GetComponentInParent<Objective>();
-            if (objective != null)
+            if (objective != null && objective.actsOnTrigger)
             {
                 //add points on hit
                 GameManager.instance.levelManager.AddPoints(objective.PointsOnHit);

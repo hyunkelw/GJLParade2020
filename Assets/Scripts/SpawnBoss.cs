@@ -20,6 +20,7 @@ public class SpawnBoss : MonoBehaviour
     [SerializeField] private Material redWater;
     [SerializeField] private FallManagerConfig_SO bossConfig;
 
+#if UNITY_EDITOR
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -29,6 +30,7 @@ public class SpawnBoss : MonoBehaviour
             StartCoroutine(BossAppearanceCinematic());
         }
     }
+#endif
 
     private IEnumerator BossAppearanceCinematic()
     {

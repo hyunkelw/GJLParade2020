@@ -26,6 +26,7 @@ public class Airplane : MonoBehaviour
 
     }
 
+#if UNITY_EDITOR
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.H))
@@ -33,6 +34,7 @@ public class Airplane : MonoBehaviour
             StartPath();
         }
     }
+#endif
 
     public void StartPath()
     {
