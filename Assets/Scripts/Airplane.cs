@@ -34,7 +34,7 @@ public class Airplane : MonoBehaviour
         }
     }
 
-    private void StartPath()
+    public void StartPath()
     {
         patrol = rb.DOPath(path, travelSpeed, PathType.CatmullRom)
                    .SetEase(Ease.Linear)

@@ -311,7 +311,6 @@ GameObject:
   - component: {fileID: 1582691905055079455}
   - component: {fileID: 1582691905055079452}
   - component: {fileID: 1582691905055079453}
-  - component: {fileID: 1582691905055079454}
   m_Layer: 5
   m_Name: Boss Appearance panel
   m_TagString: Untagged
@@ -375,23 +374,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1582691905055079454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582691905055079448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d7214413f5624c4882937f4a7204e50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panel: {fileID: 1582691905055079453}
-  boss: {fileID: 0}
-  player: {fileID: 0}
-  cam: {fileID: 0}
-  fadeTime: 3
 --- !u!1001 &7008452590404222675
 PrefabInstance:
   m_ObjectHideFlags: 0

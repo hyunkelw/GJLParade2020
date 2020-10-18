@@ -42,6 +42,7 @@ public class LevelManager : MonoBehaviour
     public void TriggeredTimerStart()
     {
         GameManager.instance.fallManager.IsSpawning = true;
+        GameManager.instance.airplane.StartPath();
     }
 
     public void GameOver(bool win)

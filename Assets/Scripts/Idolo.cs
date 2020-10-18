@@ -16,7 +16,7 @@ public class Idolo : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         //if hit by a carp, remove from the list
-        if(idolosInScene.Contains(this) && collision.gameObject.GetComponent<Carp>())
+        if(idolosInScene.Contains(this) && (collision.gameObject.GetComponent<Carp>() || collision.gameObject.GetComponent<Bat>()))
         {
             idolosInScene.Remove(this);
 

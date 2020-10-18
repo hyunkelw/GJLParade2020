@@ -6,6 +6,7 @@ public class GameManager : Singleton<GameManager>
 {
     public UIManager uiManager { get; private set; }
     public Player player { get; private set; }
+    public Airplane airplane { get; private set; }
     public LevelManager levelManager { get; private set; }
     public FallManager fallManager { get; private set; }
 
@@ -14,6 +15,7 @@ public class GameManager : Singleton<GameManager>
         //get references
         uiManager = FindObjectOfType<UIManager>();
         player = FindObjectOfType<Player>();
+        airplane = FindObjectOfType<Airplane>();
         levelManager = FindObjectOfType<LevelManager>();
         fallManager = FindObjectOfType<FallManager>();
             
