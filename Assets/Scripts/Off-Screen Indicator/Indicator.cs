@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// </summary>
 public class Indicator : MonoBehaviour
 {
-    [SerializeField] private IndicatorType indicatorType;
+    [SerializeField] private IndicatorType indicatorType = default;
     private Image indicatorImage;
     private Text distanceText;
 

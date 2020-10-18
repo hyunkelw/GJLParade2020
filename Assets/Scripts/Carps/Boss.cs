@@ -10,12 +10,12 @@ public class Boss : MonoBehaviour
     [SerializeField] float pushOnDie = 100;
 
     [Header("Blink")]
-    [SerializeField] private int blinkTimes;
-    [SerializeField] float timeBlink;
-    [SerializeField] Material blinkMaterial;
+    [SerializeField] private int blinkTimes = default;
+    [SerializeField] float timeBlink = default;
+    [SerializeField] Material blinkMaterial = default;
 
-    [SerializeField] GameObject nukeParticles;
-    [SerializeField] Transform nukePosition;
+    [SerializeField] GameObject nukeParticles = default;
+    [SerializeField] Transform nukePosition = default;
 
     Coroutine blink_Coroutine;
     
