@@ -82,12 +82,11 @@ public class Player : MonoBehaviour
 #endif
     }
 
-    public IEnumerator LookAtBoss(Transform target)
+    public void LookAtBoos(Vector3 bossPosition)
     {
-        Vector3 direction = target.transform.position - transform.position;
+        Vector3 direction = bossPosition - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         cameraBaseControl.SetRotation(lookRotation);
-        yield return null;
     }
 
     void OnDrawGizmosSelected()
