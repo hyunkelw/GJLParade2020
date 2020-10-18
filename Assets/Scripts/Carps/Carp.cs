@@ -6,9 +6,11 @@ public class Carp : MonoBehaviour
     [Tooltip("Particles to instantiate on super hit")] [SerializeField] ParticleSystem[] particlesPrefabs = default;
     [Tooltip("Trails to instantiate on super hit")] [SerializeField] TrailRenderer[] trailsPrefabs = default;
     [Tooltip("Cheater")] [SerializeField] bool isCheatingActive = default;
+    [Tooltip("Sound")] [SerializeField] AudioClip whistle = default;
 
     ParticleSystem[] particles;
     TrailRenderer[] trails;
+    AudioSource carpSound;
 
     bool alreadyGavePoints;
 
@@ -21,6 +23,7 @@ public class Carp : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         targetComponent = GetComponent<Target>();
+        carpSound = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -35,6 +38,10 @@ public class Carp : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (!carpSound.isPlaying)
+        {
+            carpSound.Play();
+        }
         //if still falling by coroutine, stop and use gravity
         if (rb.useGravity == false)
         { 
@@ -88,6 +95,9 @@ public class Carp : MonoBehaviour
 
         //instantiate trail
         InstantiateTrail();
+
+        AudioSource.PlayClipAtPoint(whistle, transform.position, .1f);
+        
 
         //if has explosive, set super hit
         Explosive explosive = GetComponent<Explosive>();
