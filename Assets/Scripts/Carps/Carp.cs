@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 
 public class Carp : MonoBehaviour
 {
-    [Tooltip("Gravity on the fish when spawn")] [SerializeField] float gravity = -3;
     [Tooltip("Particles to instantiate on super hit")] [SerializeField] ParticleSystem[] particlesPrefabs = default;
     [Tooltip("Trails to instantiate on super hit")] [SerializeField] TrailRenderer[] trailsPrefabs = default;
     [Tooltip("Cheater")] [SerializeField] bool isCheatingActive = default;
@@ -16,26 +14,24 @@ public class Carp : MonoBehaviour
 
     Rigidbody rb;
     private Tween jumping;
+    private Target targetComponent;
 
 
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody>();
+        targetComponent = GetComponent<Target>();
     }
 
     void Start()
     {
         rb.useGravity = false;
-
-        //start falling
-        //StartCoroutine(Fall_Coroutine());
     }
 
     public void Jump(Vector3 position, float jumpPower, int numJumps, float duration)
     {
         jumping = rb.DOJump(position, jumpPower, numJumps, duration);
     }
-
 
     void OnCollisionEnter(Collision collision)
     {
@@ -50,13 +46,18 @@ public class Carp : MonoBehaviour
                 rb.DOMove(FindObjectOfType<Airplane>().transform.position, 2f).OnComplete(()=> rb.useGravity=true);
             }
         }
+        if (targetComponent != null)
+        {
+            targetComponent.enabled = false;
+        }
+        
 
         //only if not already gave points
         if (alreadyGavePoints == false)
         {
             //if hit objective
             Objective objective = collision.gameObject.GetComponent<Objective>();
-            if (objective != null)
+            if (objective != null && !objective.actsOnTrigger)
             {
                 //add points on hit
                 GameManager.instance.levelManager.AddPoints(objective.PointsOnHit);
@@ -64,14 +65,19 @@ public class Carp : MonoBehaviour
             }
         }
     }
-
-    IEnumerator Fall_Coroutine()
+    void OnTriggerEnter(Collider other)
     {
-        //move by script instead of gravity
-        while(rb.useGravity == false)
+        //only if not already gave points
+        if (alreadyGavePoints == false)
         {
-            rb.velocity = Vector3.up * gravity;
-            yield return null;
+            //if hit objective
+            Objective objective = other.GetComponentInParent<Objective>();
+            if (objective != null && objective.actsOnTrigger)
+            {
+                //add points on hit
+                GameManager.instance.levelManager.AddPoints(objective.PointsOnHit);
+                alreadyGavePoints = true;
+            }
         }
     }
 

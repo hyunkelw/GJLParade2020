@@ -2,28 +2,51 @@
 
 public class LevelManager : MonoBehaviour
 {
-    [Header("Debug")]
-    [SerializeField] int score = 0;
+    [Header("Magnifying Bat")]
+    [SerializeField] float sizeMultiplier = 2;
+
+    [Header("Bat Carp")]
+    [SerializeField] int multiplier = 2;
+
+    int score = 0;
+
+    public float SizeMultiplier => sizeMultiplier;
+    public bool batMagnifyingEquipped => GameManager.instance.player.batsToSwing.CompareTag("Bat Magnifying");
+    public bool batCarpEquipped => GameManager.instance.player.batsToSwing.CompareTag("Bat Carp");
 
     public void AddPoints(int points)
     {
+        //BAT CARP!
+        int pointsToAdd = batCarpEquipped ? points * multiplier : points;
+
         //add score
-        score += points;
+        score += pointsToAdd;
 
         //update UI
         GameManager.instance.uiManager.UpdateScore(score);
+
+        //if new high score, save it
+        if(PlayerPrefs.GetInt("High Score") < score)
+        {
+            PlayerPrefs.SetInt("High Score", score);
+        }
     }
 
-    public void TriggeredTimerFinish()
+    public void TriggeredTimerFinish(bool isGameOver = true)
     {
         GameManager.instance.fallManager.IsSpawning = false;
 
-        GameOver(true);
+        if (isGameOver)
+        {
+            GameOver(true);
+        }
+        
     }
 
     public void TriggeredTimerStart()
     {
         GameManager.instance.fallManager.IsSpawning = true;
+        GameManager.instance.airplane.StartPath();
     }
 
     public void GameOver(bool win)

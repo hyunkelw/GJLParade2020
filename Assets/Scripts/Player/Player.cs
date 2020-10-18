@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] float radius = 2;
 
     [Header("Bat")]
-    [SerializeField] List<Bat> batsToSwing = new List<Bat>();
+    public Bat batsToSwing = default;
     [SerializeField] BatBroken batBrokenPrefab = default;
 
     public float batRotationSpeed { get; set; }
@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
         CreateLayer.LayerAllExcept(new string[] { "Player", "Bat" }),
         QueryTriggerInteraction.Collide)
         .Length > 0;
+
+    public bool CanMove { get; set; } = true;
 
     Rigidbody rb;
     Coroutine applyFallMultiplier_Coroutine;
@@ -43,16 +45,24 @@ public class Player : MonoBehaviour
         cameraBaseControl.StartDefault(Camera.main.transform, transform);
     }
 
+
     void Update()
     {
         //jump
-        Jump(Input.GetButtonDown("Jump"));
+        if (CanMove)
+        {
+            Jump(Input.GetButtonDown("Jump"));
+        }
     }
 
     void FixedUpdate()
     {
         //move
-        Movement(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        if (CanMove)
+        {
+            Movement(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        }
+        
 
         MultiplierGravity();
     }
@@ -70,6 +80,13 @@ public class Player : MonoBehaviour
         cameraBaseControl.UpdateRotation(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
 #endif
+    }
+
+    public void LookAtBoos(Vector3 bossPosition)
+    {
+        Vector3 direction = bossPosition - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        cameraBaseControl.SetRotation(lookRotation);
     }
 
     void OnDrawGizmosSelected()
@@ -156,8 +173,8 @@ public class Player : MonoBehaviour
         Bat bat = Instantiate(batPrefab, transform.position, Quaternion.identity);
         bat.GetComponent<Rigidbody>().position = transform.position;
 
-        //add to list
-        batsToSwing.Add(bat);
+        //set current bat
+        batsToSwing = bat;
     }
 
     #endregion
@@ -179,11 +196,11 @@ public class Player : MonoBehaviour
             StopCoroutine(getNewBrokenBat_Coroutine);
 
         //destroy old bats in the world
-        foreach (Bat bat in batsToSwing)
-            Destroy(bat.gameObject);
+        if(batsToSwing != null)
+            Destroy(batsToSwing.gameObject);
 
         //remove bats from the list
-        batsToSwing.Clear();
+        //batsToSwing.Clear();
 
         //get new bat
         CreateBat(batPrefab);

@@ -8,6 +8,7 @@ public class LevelTimer : MonoBehaviour
 
     [Header("UI Elements")]
     [SerializeField] private TextMeshProUGUI countdownTimer = default;
+    [SerializeField] private GameObject levelTimerBox = default;
     [SerializeField] private TextMeshProUGUI levelTimer = default;
     [SerializeField] private GameObject preparationTimePanel = default;
 
@@ -73,6 +74,7 @@ public class LevelTimer : MonoBehaviour
             preparationTimePanel.SetActive(false);
 
             levelTimer.gameObject.SetActive(true);
+            levelTimerBox.SetActive(true);
 
             // A chi comunico che ho iniziato?
             GameManager.instance.levelManager.TriggeredTimerStart();
@@ -83,10 +85,12 @@ public class LevelTimer : MonoBehaviour
     private void OnDisable()
     {
         levelStarted = false;
+        levelTimerBox.SetActive(false);
         levelTimer.gameObject.SetActive(false);
         preparationTimePanel.SetActive(true);
         preparationTime = pTime;
         elapsedTime = 0f;
         triggeredLevelFinish = false;
+        GameManager.instance.levelManager.TriggeredTimerFinish(false);
     }
 }

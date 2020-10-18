@@ -12,6 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6a7dff4afc237a43bec572da934666e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7069092127891897356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6949739926389944262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5dd462da48ed9b49a885f1a9cf94fe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 0.42905277, g: 0.015352436, b: 0.6509434, a: 1}
+  needBoxIndicator: 1
+  needArrowIndicator: 1
+  needDistanceText: 1
+  indicator: {fileID: 0}
 --- !u!135 &36824661974600159
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -82,6 +99,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carp Thanos
       objectReference: {fileID: 0}
+    - target: {fileID: 4292732457028444322, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
+        type: 3}
+      propertyPath: m_TagString
+      value: Carp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5170116679701026582, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5170116679701026582, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5170116679701026582, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8485115476585702137, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -136,6 +173,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8485115476585702137, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8485115476585702137, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8485115476585702137, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7, type: 3}
@@ -213,6 +265,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8418b5a86b353b48883b6374a0d4af5,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8418b5a86b353b48883b6374a0d4af5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d8418b5a86b353b48883b6374a0d4af5,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: d8418b5a86b353b48883b6374a0d4af5,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -227,6 +294,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d8418b5a86b353b48883b6374a0d4af5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Carp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8418b5a86b353b48883b6374a0d4af5, type: 3}

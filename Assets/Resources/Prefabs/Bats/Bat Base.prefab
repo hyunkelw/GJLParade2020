@@ -163,9 +163,8 @@ MonoBehaviour:
   up: -50
   down: 30
   speedThreshold: 20
-  batParticles: {fileID: 19800004, guid: 663a1750721902246a284820975a0396, type: 3}
+  batParticles: {fileID: 19800004, guid: d88534c222bdd8c48aeefce586e59d27, type: 3}
   showBatForce: 0
-  rotationSpeed: 11
 --- !u!54 &8389116926845426428
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -193,8 +192,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.20000002, y: 0.20000002, z: 1.15}
-  m_Center: {x: 0, y: 0, z: 0.3}
+  m_Size: {x: 0.20000002, y: 0.20000002, z: 1}
+  m_Center: {x: 0, y: 0, z: 0.4}
 --- !u!1 &8620524558848269903
 GameObject:
   m_ObjectHideFlags: 0

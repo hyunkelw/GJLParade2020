@@ -2,13 +2,16 @@
 {
     using UnityEngine;
     using UnityEngine.UI;
+    using TMPro;
+    using UnityEngine.Playables;
 
     [AddComponentMenu("redd096/MonoBehaviours/UI Manager")]
     public class UIManager : MonoBehaviour
     {
         [SerializeField] GameObject pauseMenu = default;
         [SerializeField] GameObject endMenu = default;
-        [SerializeField] Text scoreText = default;
+        //[SerializeField] Text scoreText = default;
+        [SerializeField] TextMeshProUGUI scoreText = default;
         [SerializeField] string scoreString = "Score: ";
 
         void Awake()
@@ -24,11 +27,14 @@
 
         public void EndMenu(bool active)
         {
+            endMenu.SetActive(active);
+
             //be sure to not have pause menu when active end menu
             if (active)
+            {
                 PauseMenu(false);
-
-            endMenu.SetActive(active);
+                endMenu.GetComponent<PlayableDirector>().Play();
+            }
         }
 
         public void UpdateScore(int score)

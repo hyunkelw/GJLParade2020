@@ -28,6 +28,13 @@ public class Bat : MonoBehaviour
     Quaternion inputRotation = Quaternion.identity;
     Pooling<ParticleSystem> poolingParticles = new Pooling<ParticleSystem>();
 
+    void Awake()
+    {
+        //deactive collider and start coroutine
+        GetComponent<Collider>().enabled = false;
+        StartCoroutine(ResetCollider());
+    }
+
     void Start()
     {
         cam = Camera.main;
@@ -119,6 +126,15 @@ public class Bat : MonoBehaviour
 
     #region private API
 
+    IEnumerator ResetCollider()
+    {
+        //wait
+        yield return new WaitForSeconds(0.3f);
+
+        //reset collider
+        GetComponent<Collider>().enabled = true;
+    }
+
     bool CheckTouchOnBat()
     {
         Ray ray = cam.ScreenPointToRay(Input.GetTouch(0).position);
@@ -163,21 +179,17 @@ public class Bat : MonoBehaviour
     protected void SuperHit(Collision collision)
     {
         //pooling particles on the bat
-        ParticleSystem go = poolingParticles.Instantiate(batParticles, collision.GetContact(0).point, Quaternion.identity);        
-        go.Play(true);
+        if (batParticles != null)
+        {
+            ParticleSystem go = poolingParticles.Instantiate(batParticles, collision.GetContact(0).point, Quaternion.identity);
+            go.Play(true);
+        }
 
         //if hit a carp, call his super hit
         Carp carp = collision.gameObject.GetComponent<Carp>();
         if (carp != null)
         {
             carp.SuperHit();
-        }
-
-        //activate camera shake
-        var cameraShake = cam.GetComponent<CameraShaker>();
-        if (cameraShake.isActiveAndEnabled)
-        {
-            cameraShake.Shake();
         }
     }
 

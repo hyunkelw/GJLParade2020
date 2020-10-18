@@ -19,7 +19,7 @@ public class SplashScreen : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(FadeInAndOut());
+        //StartCoroutine(FadeInAndOut());
     }
 
     IEnumerator FadeInAndOut()
@@ -75,5 +75,10 @@ public class SplashScreen : MonoBehaviour
         image.color = new Color(image.color.r, image.color.g, image.color.b, alpha);
 
         return delta;
+    }
+
+    public void ChangeScene()
+    {
+        SceneManager.LoadScene(nextSceneName);
     }
 }
