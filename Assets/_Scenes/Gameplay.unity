@@ -764,6 +764,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1259237337371417592, guid: bcdc9bc9b6a385048b5ad06e261c5a1e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e6ab25261e41a2d439228056c073a2c5, type: 2}
     - target: {fileID: 2170186506318119327, guid: bcdc9bc9b6a385048b5ad06e261c5a1e,
         type: 3}
       propertyPath: response.m_PersistentCalls.m_Calls.Array.size
@@ -1418,6 +1423,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bat Broken Pedestal
       objectReference: {fileID: 0}
+    - target: {fileID: 8307046368414551561, guid: 38f3819b8ccb7394f824a243eef3fa13,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8ddb1b0640fbfb14bbdd2ef8057cf777, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38f3819b8ccb7394f824a243eef3fa13, type: 3}
 --- !u!4 &444684808 stripped
@@ -4262,6 +4272,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bat Standard Pedestal
       objectReference: {fileID: 0}
+    - target: {fileID: 8191221564026691443, guid: 30bca05dd3cf365428fc616c4a208d10,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dc51f7d2aa3ed4048b978f7cfc722c49, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30bca05dd3cf365428fc616c4a208d10, type: 3}
 --- !u!4 &1485948592 stripped
@@ -5775,6 +5790,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bat Magnifying Pedestal
       objectReference: {fileID: 0}
+    - target: {fileID: 7257875068477077202, guid: d4c33012b17906b43b80045db35aef25,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d6696092fea987e468b5429108435712, type: 2}
     - target: {fileID: 9028948214324478913, guid: d4c33012b17906b43b80045db35aef25,
         type: 3}
       propertyPath: response.m_PersistentCalls.m_Calls.Array.size
