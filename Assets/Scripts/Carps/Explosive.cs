@@ -54,7 +54,7 @@ public class Explosive : MonoBehaviour
         alreadyExploded = true;
 
         List<Rigidbody> pushedRigidbodies = new List<Rigidbody>();
-        int layer = redd096.CreateLayer.LayerOnly(new string[] { "Player", "Falling Object" });
+        int layer = redd096.CreateLayer.LayerOnly(new string[] { "Player" });//, "Falling Object" });
 
         //overlap
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius, layer);
