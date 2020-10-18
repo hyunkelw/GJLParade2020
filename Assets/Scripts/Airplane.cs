@@ -6,6 +6,7 @@ public class Airplane : MonoBehaviour
 {
     [SerializeField] List<Transform> patrolPoints = new List<Transform>();
     [SerializeField] private float travelSpeed = 2f;
+    [SerializeField] private GameObject ExplosionVFX = default;
     private Rigidbody rb;
     private Tween patrol;
     Vector3[] path;
@@ -49,6 +50,9 @@ public class Airplane : MonoBehaviour
     {
         rb.useGravity = true;
         patrol.Kill();
+
+        Instantiate(ExplosionVFX, transform.position, Quaternion.identity);
+        Destroy(gameObject, 3f);
 
         //save objective
         PlayerPrefs.SetInt("Airplane Destroyed", 1);

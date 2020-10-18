@@ -12,7 +12,7 @@ public class MainMenuBats : MonoBehaviour
     [SerializeField] GameObject batMagnifying = default;
     [SerializeField] GameObject batBroken = default;
 
-    void Awake()
+    void OnEnable()
     {
         int highScore = PlayerPrefs.GetInt("High Score", 0);
         int airplaneDestroyed = PlayerPrefs.GetInt("Airplane Destroyed", 0);

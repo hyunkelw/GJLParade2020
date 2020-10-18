@@ -91,5 +91,6 @@ public class LevelTimer : MonoBehaviour
         preparationTime = pTime;
         elapsedTime = 0f;
         triggeredLevelFinish = false;
+        GameManager.instance.levelManager.TriggeredTimerFinish(false);
     }
 }

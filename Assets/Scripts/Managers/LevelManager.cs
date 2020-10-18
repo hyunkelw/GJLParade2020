@@ -32,11 +32,15 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void TriggeredTimerFinish()
+    public void TriggeredTimerFinish(bool isGameOver = true)
     {
         GameManager.instance.fallManager.IsSpawning = false;
 
-        GameOver(true);
+        if (isGameOver)
+        {
+            GameOver(true);
+        }
+        
     }
 
     public void TriggeredTimerStart()

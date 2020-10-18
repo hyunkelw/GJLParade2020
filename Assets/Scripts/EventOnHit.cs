@@ -10,6 +10,11 @@ public class EventOnHit : MonoBehaviour
     bool canHit = true;
     Coroutine resetHit_Coroutine;
 
+    private void OnEnable()
+    {
+        ResetHitAfterTime(1f);
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         //if hit a bat
@@ -33,6 +38,8 @@ public class EventOnHit : MonoBehaviour
         if (resetHit_Coroutine == null)
             resetHit_Coroutine = StartCoroutine(ResetHit_Coroutine(timeToWait));
     }
+
+    
 
     IEnumerator ResetHit_Coroutine(float timeToWait)
     {

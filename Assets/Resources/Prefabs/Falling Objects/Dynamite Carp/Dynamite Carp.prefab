@@ -46,7 +46,7 @@ MonoBehaviour:
   force: 5000
   upwardsModifier: 10000
   explodeOnCarpHit: 0
-  particles: {fileID: 6838582286958913066, guid: c69ab10b554edbc448d338c505ed710e,
+  particles: {fileID: 942746700862117026, guid: d2976b65fafcd7e4f843c0783f37e03a,
     type: 3}
   isOnlyOnSuperHit: 1
   superHit: 0
