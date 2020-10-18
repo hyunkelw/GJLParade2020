@@ -10,6 +10,13 @@ public class SpawnBoss : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private Camera cam;
     [SerializeField] private float fadeTime = 3f;
+    [SerializeField] private Collider[] areas = default;
+    [SerializeField] [Range(0f, 10f)] private float minJumpPower = 0;
+    [SerializeField] [Range(0f, 10f)] private float maxJumpPower = 0;
+    [SerializeField] [Range(0f, 10f)] private float minDuration = 0;
+    [SerializeField] [Range(0f, 10f)] private float maxDuration = 0;
+    [SerializeField] private Material bossSky;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -22,15 +29,23 @@ public class SpawnBoss : MonoBehaviour
 
     private IEnumerator BossAppearanceCinematic()
     {
-        panel.enabled = true;
-        player.enabled = false;
+        
+        player.CanMove = false;
         boss.SetActive(true);
-        var sequence = DOTween.Sequence();
+        
         //sequence.Append(player.transform.DOLookAt(boss.transform.position, 2f));
         //sequence.Append(player.transform.DOLookAt(boss.transform.position, 2f));        
+        RenderSettings.skybox = bossSky;
+        yield return player.LookAtBoss(boss.transform);
+        panel.enabled = true;
+        //yield return new WaitForSeconds(1f);
+        var sequence = DOTween.Sequence();
         sequence.Append(panel.DOFade(0, fadeTime).OnComplete(() => cam.GetComponent<CameraShaker>().Shake()));
         yield return sequence.Play().WaitForCompletion();
-        player.enabled = true;
+        
+        //GameManager.instance.fallManager.Areas = areas;
+        //GameManager.instance.fallManager.SetSpawnValues(minJumpPower, maxJumpPower, minDuration, maxDuration);
+        player.CanMove = true;
     }
 
     public void Spawn()

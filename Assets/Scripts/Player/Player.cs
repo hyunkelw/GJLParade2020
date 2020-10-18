@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
         QueryTriggerInteraction.Collide)
         .Length > 0;
 
+    public bool CanMove { get; set; } = true;
+
     Rigidbody rb;
     Coroutine applyFallMultiplier_Coroutine;
     Coroutine getNewBrokenBat_Coroutine;
@@ -43,16 +45,24 @@ public class Player : MonoBehaviour
         cameraBaseControl.StartDefault(Camera.main.transform, transform);
     }
 
+
     void Update()
     {
         //jump
-        Jump(Input.GetButtonDown("Jump"));
+        if (CanMove)
+        {
+            Jump(Input.GetButtonDown("Jump"));
+        }
     }
 
     void FixedUpdate()
     {
         //move
-        Movement(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        if (CanMove)
+        {
+            Movement(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        }
+        
 
         MultiplierGravity();
     }
@@ -70,6 +80,14 @@ public class Player : MonoBehaviour
         cameraBaseControl.UpdateRotation(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
 #endif
+    }
+
+    public IEnumerator LookAtBoss(Transform target)
+    {
+        Vector3 direction = target.transform.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        cameraBaseControl.SetRotation(lookRotation);
+        yield return null;
     }
 
     void OnDrawGizmosSelected()

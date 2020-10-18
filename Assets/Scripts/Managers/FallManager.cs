@@ -12,11 +12,11 @@ public class FallManager : MonoBehaviour
 {
     [Tooltip("Area spawn objects")]
     [SerializeField] private Collider[] areas = default;
-    [Tooltip("Prefabs to instantiate")] 
+    [Tooltip("Prefabs to instantiate")]
     [SerializeField] private CarpStruct[] carps = default;
-    [Tooltip("Delay between spawn")] 
+    [Tooltip("Delay between spawn")]
     [SerializeField] private float delay = 1.5f;
-    [Header("Jump")] 
+    [Header("Jump")]
     [SerializeField] private bool jump = false;
     [SerializeField] [Range(0f, 10f)] private float minJumpPower = 0;
     [SerializeField] [Range(0f, 10f)] private float maxJumpPower = 0;
@@ -24,9 +24,10 @@ public class FallManager : MonoBehaviour
     [SerializeField] [Range(0f, 10f)] private float maxDuration = 0;
 
     float time;
-    
+
 
     public bool IsSpawning { get; set; } = false;
+    public Collider[] Areas { get => areas; set => areas = value; }
 
     void Update()
     {
@@ -59,7 +60,7 @@ public class FallManager : MonoBehaviour
         int random = Random.Range(0, 100);
         int percentage = 0;
 
-        for(int i = 0; i < carps.Length; i++)
+        for (int i = 0; i < carps.Length; i++)
         {
             percentage += carps[i].percentage;
 
@@ -84,6 +85,14 @@ public class FallManager : MonoBehaviour
             carp.Jump(GameManager.instance.player.transform.position, jumpPower, 1, duration);
             //carp.GetComponent<Rigidbody>().DOJump(GameManager.instance.player.transform.position, jumpPower, 1, duration);
         }
+    }
+
+    public void SetSpawnValues(float minJumpPower, float maxJumpPower, float minDuration, float maxDuration)
+    {
+        this.minJumpPower = minJumpPower;
+        this.maxJumpPower = maxJumpPower;
+        this.minDuration = minDuration;
+        this.maxDuration = maxDuration;
     }
 
     void CheckIsMagnifyingBat(Carp carp)

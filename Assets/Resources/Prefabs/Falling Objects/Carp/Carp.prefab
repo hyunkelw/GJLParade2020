@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5dd462da48ed9b49a885f1a9cf94fe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetColor: {r: 0.13906658, g: 0.44705883, b: 0, a: 1}
+  targetColor: {r: 0.990566, g: 0.95360327, b: 0, a: 1}
   needBoxIndicator: 1
   needArrowIndicator: 1
   needDistanceText: 1
