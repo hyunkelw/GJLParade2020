@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] int multiplier = 2;
 
     int score = 0;
+    [SerializeField]private float timeToWin =10f;
 
     public float SizeMultiplier => sizeMultiplier;
     public bool batMagnifyingEquipped => GameManager.instance.player.batsToSwing.CompareTag("Bat Magnifying");
@@ -38,7 +40,7 @@ public class LevelManager : MonoBehaviour
 
         if (isGameOver)
         {
-            GameOver(true);
+            GameOver(false);
         }
         
     }
@@ -51,7 +53,18 @@ public class LevelManager : MonoBehaviour
 
     public void GameOver(bool win)
     {
-        //player disabled and can't pause
+            StartCoroutine(WaitAndOpenWinScreen(win));
+    }
+
+    public IEnumerator WaitAndOpenWinScreen(bool win)
+    {
+        if (win)
+        {
+            yield return new WaitForSeconds(timeToWin);
+        }
+
+
+        // player disabled and can't pause
         GameManager.instance.player.GetComponent<PauseGame>().enabled = false;
         GameManager.instance.player.enabled = false;
 
@@ -60,6 +73,13 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 0;
 
         //show end menu
-        GameManager.instance.uiManager.EndMenu(true);
+        if (!win)
+        {
+            GameManager.instance.uiManager.EndMenu(true);
+        }
+        else
+        {
+            GameManager.instance.uiManager.WinSplash(true);
+        }
     }
 }

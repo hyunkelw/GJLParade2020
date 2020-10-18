@@ -10,6 +10,7 @@
     {
         [SerializeField] GameObject pauseMenu = default;
         [SerializeField] GameObject endMenu = default;
+        [SerializeField] GameObject winPanel = default;
         //[SerializeField] Text scoreText = default;
         [SerializeField] TextMeshProUGUI scoreText = default;
         [SerializeField] string scoreString = "Score: ";
@@ -18,6 +19,7 @@
         {
             //remove end menu on awake
             EndMenu(false);
+            WinSplash(false);
         }
 
         public void PauseMenu(bool active)
@@ -36,6 +38,12 @@
                 endMenu.GetComponent<PlayableDirector>().Play();
             }
         }
+
+        public void WinSplash(bool active)
+        {
+            winPanel.SetActive(active);
+        }
+
 
         public void UpdateScore(int score)
         {
