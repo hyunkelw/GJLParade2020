@@ -191,13 +191,6 @@ public class Bat : MonoBehaviour
         {
             carp.SuperHit();
         }
-
-        //activate camera shake
-        var cameraShake = cam.GetComponent<CameraShaker>();
-        if (cameraShake.isActiveAndEnabled)
-        {
-            cameraShake.Shake();
-        }
     }
 
     #endregion

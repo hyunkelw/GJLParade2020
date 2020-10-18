@@ -938,7 +938,6 @@ GameObject:
   - component: {fileID: 291673859}
   - component: {fileID: 291673858}
   - component: {fileID: 291673861}
-  - component: {fileID: 291673862}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1042,21 +1041,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &291673862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 291673857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2b087f2ba0791743812505034b534f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 0.15
-  strength: 4
-  vibrato: 10
 --- !u!114 &345681153 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7384493858900746974, guid: e9a1e4dbc0c58fb4084d4b013e710e4f,
@@ -2457,17 +2441,17 @@ PrefabInstance:
     - target: {fileID: 7384493858900746974, guid: e9a1e4dbc0c58fb4084d4b013e710e4f,
         type: 3}
       propertyPath: m_MaxValue
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7384493858900746974, guid: e9a1e4dbc0c58fb4084d4b013e710e4f,
         type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7384493858900746974, guid: e9a1e4dbc0c58fb4084d4b013e710e4f,
         type: 3}
       propertyPath: m_WholeNumbers
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8315083014965804376, guid: e9a1e4dbc0c58fb4084d4b013e710e4f,
         type: 3}
@@ -4869,12 +4853,6 @@ MonoBehaviour:
   player: {fileID: 822127777}
   cam: {fileID: 291673859}
   fadeTime: 3
-  areas:
-  - {fileID: 1833109185}
-  minJumpPower: 0
-  maxJumpPower: 0.1
-  minDuration: 2
-  maxDuration: 3
   bossSky: {fileID: 2100000, guid: dd7a5df0e2fe538428b71d82443d38d4, type: 2}
   redWater: {fileID: 2100000, guid: 96a63d7a230732945a72b61df86db5e7, type: 2}
   bossConfig: {fileID: 11400000, guid: 1c7f53301dc6c824bac87e76a829b2aa, type: 2}

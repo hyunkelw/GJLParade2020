@@ -11,26 +11,9 @@ public class SpawnBoss : MonoBehaviour
     [SerializeField] private Player player = default;
     [SerializeField] private Camera cam = default;
     [SerializeField] private float fadeTime = 3f;
-    [SerializeField] private Collider[] areas = default;
-    [SerializeField] [Range(0f, 10f)] private float minJumpPower = 0;
-    [SerializeField] [Range(0f, 10f)] private float maxJumpPower = 0;
-    [SerializeField] [Range(0f, 10f)] private float minDuration = 0;
-    [SerializeField] [Range(0f, 10f)] private float maxDuration = 0;
-    [SerializeField] private Material bossSky;
-    [SerializeField] private Material redWater;
-    [SerializeField] private FallManagerConfig_SO bossConfig;
-
-#if UNITY_EDITOR
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //player.enabled = false;
-            //player.transform.DOLookAt(boss.transform.position, 2f).OnComplete(()=>player.enabled = true);
-            StartCoroutine(BossAppearanceCinematic());
-        }
-    }
-#endif
+    [SerializeField] private Material bossSky = default;
+    [SerializeField] private Material redWater = default;
+    [SerializeField] private FallManagerConfig_SO bossConfig = default;
 
     private IEnumerator BossAppearanceCinematic()
     {

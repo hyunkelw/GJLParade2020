@@ -89,10 +89,10 @@ public class SimpleOptions : MonoBehaviour
     public void Slider_Volume(float value)
     {
         //set volume
-        AudioListener.volume = value;
+        AudioListener.volume = value / 10;
 
         //update text
-        text_Volume.text = string_Volume + (value * 10).ToString("F0");
+        text_Volume.text = string_Volume + value.ToString("F0");
     }
 
     #endregion

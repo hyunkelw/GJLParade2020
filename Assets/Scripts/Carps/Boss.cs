@@ -80,8 +80,11 @@ public class Boss : MonoBehaviour
         rb.constraints = RigidbodyConstraints.None;
         rb.AddForce(-transform.forward * pushOnDie, ForceMode.VelocityChange);
         Instantiate(nukeParticles, nukePosition.position, Quaternion.identity);
-        Destroy(gameObject, 3f);
+
         //save to unlock bat
         PlayerPrefs.SetInt("Boss Killed", 1);
+
+        //win
+        GameManager.instance.levelManager.GameOver(true);
     }
 }
