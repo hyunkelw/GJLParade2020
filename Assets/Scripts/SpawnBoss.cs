@@ -7,6 +7,7 @@ public class SpawnBoss : MonoBehaviour
 {
     [SerializeField] private Image panel = default;
     [SerializeField] private GameObject boss = default;
+    [SerializeField] private GameObject waterGO = default;
     [SerializeField] private Player player = default;
     [SerializeField] private Camera cam = default;
     [SerializeField] private float fadeTime = 3f;
@@ -16,6 +17,8 @@ public class SpawnBoss : MonoBehaviour
     [SerializeField] [Range(0f, 10f)] private float minDuration = 0;
     [SerializeField] [Range(0f, 10f)] private float maxDuration = 0;
     [SerializeField] private Material bossSky;
+    [SerializeField] private Material redWater;
+    [SerializeField] private FallManagerConfig_SO bossConfig;
 
     private void Update()
     {
@@ -36,6 +39,7 @@ public class SpawnBoss : MonoBehaviour
         //sequence.Append(player.transform.DOLookAt(boss.transform.position, 2f));
         //sequence.Append(player.transform.DOLookAt(boss.transform.position, 2f));        
         RenderSettings.skybox = bossSky;
+        waterGO.GetComponent<MeshRenderer>().material = redWater;
         yield return player.LookAtBoss(boss.transform);
         panel.enabled = true;
         //yield return new WaitForSeconds(1f);
@@ -43,7 +47,7 @@ public class SpawnBoss : MonoBehaviour
         sequence.Append(panel.DOFade(0, fadeTime).OnComplete(() => cam.GetComponent<CameraShaker>().Shake()));
         yield return sequence.Play().WaitForCompletion();
         
-        //GameManager.instance.fallManager.Areas = areas;
+        GameManager.instance.fallManager.SetConfig(bossConfig);
         //GameManager.instance.fallManager.SetSpawnValues(minJumpPower, maxJumpPower, minDuration, maxDuration);
         player.CanMove = true;
     }

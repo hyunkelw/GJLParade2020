@@ -2,13 +2,15 @@
 {
     using UnityEngine;
     using UnityEngine.UI;
+    using TMPro;
 
     [AddComponentMenu("redd096/MonoBehaviours/UI Manager")]
     public class UIManager : MonoBehaviour
     {
         [SerializeField] GameObject pauseMenu = default;
         [SerializeField] GameObject endMenu = default;
-        [SerializeField] Text scoreText = default;
+        //[SerializeField] Text scoreText = default;
+        [SerializeField] TextMeshProUGUI scoreText = default;
         [SerializeField] string scoreString = "Score: ";
 
         void Awake()

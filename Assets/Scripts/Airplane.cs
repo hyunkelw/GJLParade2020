@@ -11,7 +11,7 @@ public class Airplane : MonoBehaviour
     Vector3[] path;
 
 
-    private void Start()
+    private void OnEnable()
     {
 
         rb = GetComponent<Rigidbody>();
@@ -39,7 +39,7 @@ public class Airplane : MonoBehaviour
         patrol = rb.DOPath(path, travelSpeed, PathType.CatmullRom)
                    .SetEase(Ease.Linear)
                    .SetSpeedBased()
-                   .SetLookAt(0.1f)
+                   .SetLookAt(0.01f)
                    .SetLoops(-1, LoopType.Incremental);
     }
 
