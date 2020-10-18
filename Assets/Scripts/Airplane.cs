@@ -11,6 +11,7 @@ public class Airplane : MonoBehaviour
     private Tween patrol;
     Vector3[] path;
     [SerializeField] AudioClip aereoCade = default;
+    [SerializeField] float volume = 0.5f;
 
 
     private void OnEnable()
@@ -52,7 +53,7 @@ public class Airplane : MonoBehaviour
         rb.useGravity = true;
         patrol.Kill();
 
-        redd096.SoundManager.StartMusic(GetComponent<AudioSource>(), aereoCade, 1, false);
+        redd096.SoundManager.StartMusic(GetComponent<AudioSource>(), aereoCade, volume, false);
 
         Instantiate(ExplosionVFX, transform.position, Quaternion.identity);
         Destroy(gameObject, 10f);
