@@ -17,6 +17,7 @@ public class Bat : MonoBehaviour
     [Header("Super Hit")]
     [Tooltip("Speed to reach for super hit")] public float speedThreshold = 20;
     [Tooltip("Particles to instantiate on super hit")] [SerializeField] ParticleSystem batParticles = default;
+    //[Tooltip("Swing sound")] [SerializeField] AudioClip swingSound = default;
 
     [Header("Debug")]
     [SerializeField] bool showBatForce = false;
@@ -25,6 +26,7 @@ public class Bat : MonoBehaviour
     Rigidbody rb;
 
     bool SwingingBat;
+    AudioSource batSound;
     Quaternion inputRotation = Quaternion.identity;
     Pooling<ParticleSystem> poolingParticles = new Pooling<ParticleSystem>();
 
@@ -32,6 +34,7 @@ public class Bat : MonoBehaviour
     {
         //deactive collider and start coroutine
         GetComponent<Collider>().enabled = false;
+        batSound = GetComponent<AudioSource>();
         StartCoroutine(ResetCollider());
     }
 
@@ -44,10 +47,20 @@ public class Bat : MonoBehaviour
     protected virtual void Update()
     {
         //if pause, stop controlling bat
-        if(Time.timeScale <= 0)
+        if (Time.timeScale <= 0)
         {
             SwingingBat = false;
             return;
+        }
+
+        //if hitting with a lot of speed
+        if (SwingingBat && rb.angularVelocity.magnitude > speedThreshold)
+        {
+            if (!batSound.isPlaying)
+            {
+                batSound.Play();
+            }
+
         }
 
 #if UNITY_ANDROID
@@ -83,7 +96,7 @@ public class Bat : MonoBehaviour
             Utility.LockMouse(CursorLockMode.Confined);
         }
         //on release, stop swing
-        else if(Input.GetKeyUp(KeyCode.Mouse0))
+        else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             SwingingBat = false;
 
@@ -96,11 +109,11 @@ public class Bat : MonoBehaviour
 
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        if(showBatForce)
+        if (showBatForce)
             Debug.Log("POTENZA MAZZATA: " + rb.angularVelocity.magnitude);
 
         //if hitting with a lot of speed
-        if(rb.angularVelocity.magnitude > speedThreshold)
+        if (rb.angularVelocity.magnitude > speedThreshold)
         {
             SuperHit(collision);
         }

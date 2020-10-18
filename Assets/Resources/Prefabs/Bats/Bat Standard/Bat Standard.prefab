@@ -130,11 +130,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bat Standard
       objectReference: {fileID: 0}
-    - target: {fileID: 8389116926845426425, guid: 6d66049e55e0b0a41a10d1a26876823b,
-        type: 3}
-      propertyPath: m_TagString
-      value: Bat Standard
-      objectReference: {fileID: 0}
     - target: {fileID: 8389116926845426430, guid: 6d66049e55e0b0a41a10d1a26876823b,
         type: 3}
       propertyPath: m_LocalPosition.x

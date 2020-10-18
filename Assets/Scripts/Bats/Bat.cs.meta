@@ -3,7 +3,9 @@ guid: 1e5b3672ee41f6d4e990b5f1657c605b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - batParticles: {instanceID: 0}
+  - swingSound: {fileID: 8300000, guid: 36b4fdf4a8f128146b36083e803f5c32, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
