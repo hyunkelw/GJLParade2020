@@ -13,6 +13,8 @@ public class SpawnBoss : MonoBehaviour
     [SerializeField] private Material bossSky = default;
     [SerializeField] private Material redWater = default;
     [SerializeField] private FallManagerConfig_SO bossConfig = default;
+    [SerializeField] private AudioSource bgmSource = default;
+    [SerializeField] private AudioClip bossBgm = default;
 
     Coroutine spawnBoss_Coroutine;
 
@@ -29,6 +31,16 @@ public class SpawnBoss : MonoBehaviour
         boss.SetActive(true);
         RenderSettings.skybox = bossSky;
         waterGO.GetComponent<MeshRenderer>().material = redWater;
+        var volume = bgmSource.volume;
+        bgmSource.DOFade(0f, 1f)
+                 .OnComplete(() =>
+                                     {
+                                         bgmSource.clip = bossBgm;
+                                         bgmSource.volume = volume;
+                                         bgmSource.Play();
+                                     }
+                     );
+        
 
         //fade out panel
         panel.Fade(1, 0, 1, OnEndFadeOut);
