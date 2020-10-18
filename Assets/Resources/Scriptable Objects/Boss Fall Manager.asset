@@ -18,7 +18,7 @@ MonoBehaviour:
     percentage: 70
   - carpPrefab: {fileID: 7784002382337989079, guid: 4aad10b8af1824845892259e68d856dc,
       type: 3}
-    percentage: 1
+    percentage: 29
   - carpPrefab: {fileID: 2345132684721314131, guid: 4c31e89ffc21bc34b97c93879e10e532,
       type: 3}
-    percentage: 29
+    percentage: 1
