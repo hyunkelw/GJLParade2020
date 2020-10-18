@@ -2491,6 +2491,16 @@ PrefabInstance:
       propertyPath: timeBlink
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 7955719825134841167, guid: 9c75aeb42b0efb44491423eab0fc8010,
+        type: 3}
+      propertyPath: damageByCarp
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7955719825134841167, guid: 9c75aeb42b0efb44491423eab0fc8010,
+        type: 3}
+      propertyPath: nukeSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: d638a7318f12b1447a03ebb693f3bfa4, type: 3}
     - target: {fileID: 8155352423462003920, guid: 9c75aeb42b0efb44491423eab0fc8010,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5557,6 +5567,8 @@ MonoBehaviour:
   sizeMultiplier: 2
   multiplier: 2
   timeToWin: 10
+  bgm: {fileID: 348397908}
+  winClip: {fileID: 8300000, guid: 6164d37a3a0acd24e96b152be508350b, type: 3}
 --- !u!4 &1557433830
 Transform:
   m_ObjectHideFlags: 0

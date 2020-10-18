@@ -16,6 +16,7 @@ public class Boss : MonoBehaviour
 
     [SerializeField] GameObject nukeParticles = default;
     [SerializeField] Transform nukePosition = default;
+    [SerializeField] AudioClip nukeSFX = default;
 
     Coroutine blink_Coroutine;
     
@@ -80,6 +81,7 @@ public class Boss : MonoBehaviour
         rb.constraints = RigidbodyConstraints.None;
         rb.AddForce(-transform.forward * pushOnDie, ForceMode.VelocityChange);
         Instantiate(nukeParticles, nukePosition.position, Quaternion.identity);
+        AudioSource.PlayClipAtPoint(nukeSFX, transform.position, .5f);
 
         //save to unlock bat
         PlayerPrefs.SetInt("Boss Killed", 1);

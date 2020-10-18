@@ -10,7 +10,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] int multiplier = 2;
 
     int score = 0;
-    [SerializeField]private float timeToWin =10f;
+    [SerializeField]private float timeToWin = 3f;
+    [SerializeField]private AudioSource bgm = default;
+    [SerializeField]private AudioClip winClip = default;
 
     public float SizeMultiplier => sizeMultiplier;
     public bool batMagnifyingEquipped => GameManager.instance.player.batsToSwing.CompareTag("Bat Magnifying");
@@ -76,10 +78,13 @@ public class LevelManager : MonoBehaviour
         if (!win)
         {
             GameManager.instance.uiManager.EndMenu(true);
+            GameManager.instance.uiManager.WinSplash(false);
         }
         else
         {
             GameManager.instance.uiManager.WinSplash(true);
+            redd096.SoundManager.StartMusic(bgm, winClip, .5f);
+            GameManager.instance.uiManager.EndMenu(false);
         }
     }
 }
