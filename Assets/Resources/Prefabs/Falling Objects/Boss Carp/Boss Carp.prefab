@@ -51,6 +51,21 @@ MonoBehaviour:
   nukeParticles: {fileID: 6838582286958913066, guid: 507f1e2230d4b0344a02b6aeecd6f092,
     type: 3}
   nukePosition: {fileID: 1331698844}
+--- !u!114 &1312695850252975364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3761670369528458799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee3ac2a74c04294981096e1088c1c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkTimes: 3
+  timeBlink: 0.1
+  blinkMaterial: {fileID: 2100000, guid: dc51f7d2aa3ed4048b978f7cfc722c49, type: 2}
 --- !u!65 &1324770935
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -74,7 +89,7 @@ PrefabInstance:
     - target: {fileID: 3519753346972297222, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
         type: 3}
       propertyPath: m_Name
-      value: Boss Carp (1)
+      value: Boss Carp
       objectReference: {fileID: 0}
     - target: {fileID: 3519753346972297222, guid: 6901a3fbbc26ae741b4a0c0a9ad9c0f7,
         type: 3}

@@ -162,5 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593c81fd0fbd21543a0cac5893ff1975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blinkTimes: 3
+  timeBlink: 0.1
+  blinkMaterial: {fileID: 2100000, guid: dc51f7d2aa3ed4048b978f7cfc722c49, type: 2}
   PointsOnHit: 2000
   actsOnTrigger: 1

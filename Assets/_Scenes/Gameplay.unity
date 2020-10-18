@@ -338,7 +338,9 @@ MonoBehaviour:
   string_BatSensitivity: 'Bat Sensitivity: '
   toggle_EnableVSync: {fileID: 1978093765}
   toggle_Lock60FPS: {fileID: 1001698187}
-  toggle_CameraShake: {fileID: 0}
+  text_Volume: {fileID: 218907558}
+  slider_Volume: {fileID: 345681153}
+  string_Volume: 'Volume: '
 --- !u!1 &58606497
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,6 +690,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 2, z: 0.25}
   m_Center: {x: 0.016, y: 0, z: -0.28}
+--- !u!114 &218907558 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8315083014965804376, guid: e9a1e4dbc0c58fb4084d4b013e710e4f,
+    type: 3}
+  m_PrefabInstance: {fileID: 633505038}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &235916539 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 95000a9352e8dbc4b9eaa55ecd3708a4,
@@ -1043,6 +1057,18 @@ MonoBehaviour:
   duration: 0.15
   strength: 4
   vibrato: 10
+--- !u!114 &345681153 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7384493858900746974, guid: e9a1e4dbc0c58fb4084d4b013e710e4f,
+    type: 3}
+  m_PrefabInstance: {fileID: 633505038}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &363376112 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 408c3e54f736f0d4e96a8015208ca581,
@@ -2010,6 +2036,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 7955719825134841167, guid: 9c75aeb42b0efb44491423eab0fc8010,
+        type: 3}
+      propertyPath: timeBlink
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 8155352423462003920, guid: 9c75aeb42b0efb44491423eab0fc8010,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2065,7 +2096,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -10.573001
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1312695850252975364, guid: 9c75aeb42b0efb44491423eab0fc8010, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9c75aeb42b0efb44491423eab0fc8010, type: 3}
 --- !u!1001 &633505038
 PrefabInstance:
@@ -2411,11 +2443,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 56088260}
+      objectReference: {fileID: 56088263}
     - target: {fileID: 7384493858900746974, guid: e9a1e4dbc0c58fb4084d4b013e710e4f,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: Slider_Volume
+      objectReference: {fileID: 0}
+    - target: {fileID: 7384493858900746974, guid: e9a1e4dbc0c58fb4084d4b013e710e4f,
+        type: 3}
+      propertyPath: m_MinValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7384493858900746974, guid: e9a1e4dbc0c58fb4084d4b013e710e4f,
+        type: 3}
+      propertyPath: m_MaxValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7384493858900746974, guid: e9a1e4dbc0c58fb4084d4b013e710e4f,
+        type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7384493858900746974, guid: e9a1e4dbc0c58fb4084d4b013e710e4f,
+        type: 3}
+      propertyPath: m_WholeNumbers
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8315083014965804376, guid: e9a1e4dbc0c58fb4084d4b013e710e4f,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Volume: 0'
       objectReference: {fileID: 0}
     - target: {fileID: 9042018143585556499, guid: e9a1e4dbc0c58fb4084d4b013e710e4f,
         type: 3}
